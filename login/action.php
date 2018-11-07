@@ -28,7 +28,7 @@ if (sizeof($_POST)) {
             ->getSingleResult();
         if ($user) {
             if (($user->username === 'admin' && $user->isMaster) || /* this condition is just for demo */
-                ($user->password && $user->password == _encrypt($txtPwd))) {
+                ($user->password && _decrypt($user->password) == $txtPwd)) {
                 $success = true;
                 unset($user->password);
                 # Create the Authentication object
