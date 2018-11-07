@@ -42,24 +42,18 @@ if ($qb->getNumRows()) {
             <?php } ?>
         </tr>
         <?php
+        $data = array();
         while ($row = $qb->fetchRow()) {
-            $data = array(
-                'catId'     => $row->catId,
-                'catName'   => $row->catName,
-            );
-            # Get translations for other languages
-            $i18n = (array) _getTranslationStrings($row, 'catName');
-            $data = array_merge($data, $i18n);
+            $data[$row->catId] = (array) _getTranslationStrings($row, 'catName');
             ?>
-            <tr id="row-<?php echo $row->catId; ?>">
+            <tr>
                 <td class="tableLeft colAction">
-                    <span class="row-data" style="display:none"><?php echo json_encode($data); ?></span>
-                    <a href="javascript:" class="edit" title="Edit" onclick="LC.Page.Category.edit(<?php echo $row->catId; ?>)">
+                    <a href="#" class="edit" title="Edit" rel="<?php echo $row->catId; ?>">
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
                 <td class="colAction">
-                    <a href="#" class="delete" title="Delete" onclick="LC.Page.Category.remove(<?php echo $row->catId; ?>)">
+                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->catId; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>
@@ -83,6 +77,7 @@ if ($qb->getNumRows()) {
         ?>
     </table>
     <div class="pager-container"><?php echo $pager->display(); ?></div>
+    <?php _addFormData('frmCategory', $data); ?>
 <?php
 } else {
 ?>

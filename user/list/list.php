@@ -39,7 +39,7 @@ if ($qb->getNumRows()) {
             $delete = true;
             $action = '';
         ?>
-            <tr id="row-<?php echo $row->usrId; ?>">
+            <tr>
                 <td class="tableLeft colAction">
                     <?php if ($row->isMaster) { ?>
                         <?php $delete = false; ?>
@@ -55,7 +55,7 @@ if ($qb->getNumRows()) {
                 </td>
                 <td class="colAction">
                     <?php if ($delete): ?>
-                        <a href="#" class="delete" title="Delete" onclick="LC.Page.User.List.remove(<?php echo $row->uid; ?>)">
+                        <a href="#" class="delete" title="Delete" rel="<?php echo $row->uid; ?>">
                             <span><?php echo _t('Delete'); ?></span>
                         </a>
                     <?php else: ?>

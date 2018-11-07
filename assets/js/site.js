@@ -52,6 +52,12 @@ LC.Page.Post = {
         list : function(lang) {
             LC.Page.Post.List.queryStr = { lang: lang };
             LC.Page.request( 'list', LC.Page.Post.List.url + 'list.php', LC.Page.Post.List.queryStr );
+            LC.Page.afterRequest = function () {
+                $('.list .colAction .delete').on('click', function (e) {
+                    e.preventDefault();
+                    LC.Page.Post.List.remove($(this).attr('rel'));
+                });
+            };
         }
     }
 };
@@ -95,7 +101,21 @@ LC.Page.Category = {
     /* Load the list */
     list : function(param) {
         $('#dialog-category').dialog( 'close' );
+
         LC.Page.request( 'list', LC.Page.Category.url + 'list.php', param );
+
+        LC.Page.afterRequest = function () {
+            $('.list .colAction .edit').on('click', function (e) {
+                e.preventDefault();
+                LC.Page.Category.edit($(this).attr('rel'));
+
+            });
+
+            $('.list .colAction .delete').on('click', function (e) {
+                e.preventDefault();
+                LC.Page.Category.remove($(this).attr('rel'));
+            });
+        };
     },
     /* Launch the dialog to create a new entry */
     create : function() {
@@ -103,9 +123,9 @@ LC.Page.Category = {
         $('#dialog-category').dialog( 'open' );
     },
     /* Launch the dialog to edit an existing entry */
-    edit : function( id ) {
+    edit : function(id) {
         LC.Form.clear('frmCategory');
-        var $data = LC.Form.data( id );
+        var $data = LC.Form.getFormData('frmCategory', id);
         if ($data) {
             var $form = $('#frmCategory');
             $form.find('#hidEditId').val( id );
@@ -195,6 +215,12 @@ LC.Page.User = {
             $('#dialog-confirm').dialog( 'close' );
             $('#dialog-warning').dialog( 'close' );
             LC.Page.request( 'list', LC.Page.User.List.url + 'list.php', param );
+            LC.Page.afterRequest = function () {
+                $('.list .colAction .delete').on('click', function (e) {
+                    e.preventDefault();
+                    LC.Page.User.List.remove($(this).attr('rel'));
+                });
+            };
         },
         /* Launch the dialog to confirm an entry delete */
         remove : function( id ) {

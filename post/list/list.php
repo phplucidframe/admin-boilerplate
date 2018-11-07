@@ -54,14 +54,14 @@ if ($qb->getNumRows()) {
             $row->postBody  = ($row->postBody_i18n) ? $row->postBody_i18n : $row->postBody;
             $row->catName   = ($row->catName_i18n) ? $row->catName_i18n : $row->catName;
             ?>
-            <tr id="row-<?php echo $row->postId; ?>">
+            <tr>
                 <td class="tableLeft colAction">
                     <a href="<?php echo _url('admin/post/setup', array($row->postId, 'lang' => $lang)); ?>" class="edit" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
                 <td class="colAction">
-                    <a href="#" class="delete" title="Delete" onclick="LC.Page.Post.List.remove(<?php echo $row->postId; ?>)">
+                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->postId; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>
