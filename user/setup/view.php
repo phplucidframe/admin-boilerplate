@@ -2,7 +2,7 @@
 <div class="block full-width">
     <h3><?php echo _t($pageTitle); ?></h3>
     <div class="content-box">
-        <form method="post" name="frmUser" id="frmUser" action="<?php echo _url('admin/user/setup/action.php'); ?>">
+        <form method="post" name="frmUser" id="frmUser" action="<?php echo _url(_cfg('baseDir') . '/user/setup/action.php'); ?>">
             <input type="hidden" name="hidEditId" id="hidEditId" value="<?php echo $id; ?>" />
             <div class="message error"></div>
             <table cellpadding="0" cellspacing="0" class="form">

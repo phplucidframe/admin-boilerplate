@@ -1,12 +1,12 @@
 LC.Page.Post = {
     Setup : {
-        url : LC.Page.url('admin/post/setup'), /* mapping directory */
+        url : LC.Page.url(LC.vars.baseDir + '/post/setup'), /* mapping directory */
         /* Initialize the page */
         init : function() {
         }
     },
     List : {
-        url : LC.Page.url('admin/post/list'), /* mapping directory */
+        url : LC.Page.url(LC.vars.baseDir + '/post/list'), /* mapping directory */
         queryStr : {},
         /* Initialize the page */
         init : function(lang) {
@@ -29,7 +29,7 @@ LC.Page.Post = {
             });
 
             $('#btnNew').click(function() {
-                window.location = LC.Page.url('admin/post/setup');
+                window.location = LC.Page.url(LC.vars.baseDir + '/post/setup');
             });
         },
         remove : function( id ) {
@@ -63,7 +63,7 @@ LC.Page.Post = {
 };
 
 LC.Page.Category = {
-    url : LC.Page.url('admin/category'), /* mapping directory */
+    url : LC.Page.url(LC.vars.baseDir + '/category'), /* mapping directory */
     /* Initialize the Category page */
     init : function() {
         /* delete confirmation */
@@ -163,16 +163,16 @@ LC.Page.Category = {
 
 LC.Page.User = {
     Setup : {
-        url : LC.Page.url('admin/user/setup'), /* mapping directory */
+        url : LC.Page.url(LC.vars.baseDir + '/user/setup'), /* mapping directory */
         /* Initialize the page */
         init : function() {
             $('#btnCancel').click(function() {
-                window.location = LC.Page.url('admin/user/list');
+                window.location = LC.Page.url(LC.vars.baseDir + '/user/list');
             });
         }
     },
     List : {
-        url : LC.Page.url('admin/user/list'), /* mapping directory */
+        url : LC.Page.url(LC.vars.baseDir + '/user/list'), /* mapping directory */
         /* Initialize the page */
         init : function() {
             /* delete confirmation */
@@ -205,7 +205,7 @@ LC.Page.User = {
                 }
             });
             $('#btnNew').click(function() {
-                window.location = LC.Page.url('admin/user/setup');
+                window.location = LC.Page.url(LC.vars.baseDir + '/user/setup');
             });
             /* Load list */
             LC.Page.User.List.list();

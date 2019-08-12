@@ -11,7 +11,7 @@
 </div>
 <!-- Category Entry Form -->
 <div id="dialog-category" class="dialog" title="<?php echo _t('Category'); ?>" style="display:none">
-    <form method="post" id="frmCategory" action="<?php echo _url('admin/category/action.php'); ?>">
+    <form method="post" id="frmCategory" action="<?php echo _url(_cfg('baseDir') . '/category/action.php'); ?>">
         <div class="message error"></div>
         <input type="hidden" id="hidEditId" name="hidEditId" />
         <table cellpadding="0" cellspacing="0" class="form">

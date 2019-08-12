@@ -8,3 +8,6 @@
 <?php _script(); ?>
 <?php _js('LC.js'); ?>
 <?php _js('app.js'); ?>
+<script>
+    LC.vars.baseDir = '<?php echo _cfg('baseDir'); ?>';
+</script>

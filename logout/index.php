@@ -1,7 +1,7 @@
 <?php
 if (auth_isAnonymous()) {
     flash_set(_t('Your session is expired.'), '', 'error');
-    _redirect('admin/login');
+    _redirect(_cfg('baseDir') . '/login');
 }
 
 $timestamp = _arg(2);
@@ -10,6 +10,6 @@ if ($timestamp) {
         # Normal logout process
         auth_clear();
         flash_set(_t('You have signed out successfully.'));
-        _redirect('admin/login');
+        _redirect(_cfg('baseDir') . '/login');
     }
 }

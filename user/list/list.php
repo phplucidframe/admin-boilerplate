@@ -46,7 +46,7 @@ if ($qb->getNumRows()) {
                         <?php $action = 'onclick="LC.Page.User.List.warning()"'; ?>
                     <?php } ?>
                     <?php if ($edit) { ?>
-                        <a href="<?php echo _url('admin/user/setup',array($row->uid)); ?>" class="edit" title="Edit" >
+                        <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->uid)); ?>" class="edit" title="Edit" >
                             <span><?php echo _t('Edit'); ?></span>
                         </a>
                     <?php } else { ?>
@@ -83,6 +83,6 @@ if ($qb->getNumRows()) {
 <?php
 } else {
 ?>
-    <div class="no-record"><?php echo _t("You don't have any user! %sLet's go create a new user!%s", '<a href="'._url('admin/user/setup').'">', '</a>'); ?></div>
+    <div class="no-record"><?php echo _t("You don't have any user! %sLet's go create a new user!%s", '<a href="'._url(_cfg('baseDir') . '/user/setup').'">', '</a>'); ?></div>
 <?php
 }

@@ -65,8 +65,7 @@ if ($qb->getNumRows()) {
                     <td class="colName <?php echo $lcode; ?>">
                         <?php
                         $lcode = _queryLang($lcode);
-                        if (isset($i18n['catName_i18n'][$lcode])) echo $i18n['catName_i18n'][$lcode];
-                        else echo '&nbsp;';
+                        echo isset($data[$row->catId]['catName_i18n'][$lcode]) ? $data[$row->catId]['catName_i18n'][$lcode] : '';
                         ?>
                     </td>
                     <?php } ?>

@@ -1,4 +1,4 @@
 <?php
 include( _i('inc/authenticate.php') );
 
-_redirect('admin/post');
+_redirect(_cfg('baseDir') . '/post');

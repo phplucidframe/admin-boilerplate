@@ -1,8 +1,8 @@
 <?php include( _i('inc/tpl/header.php') ); ?>
 <h4><?php echo $pageTitle; ?></h4>
-<?php if ($id) include( APP_ROOT . 'admin/inc/language-selection.php' ); ?>
+<?php if ($id) include( APP_ROOT . _cfg('baseDir') . '/inc/language-selection.php' ); ?>
 <div class="table clear">
-    <form method="post" id="frmPost" name="frmPost" action="<?php echo _url('admin/post/setup/action.php'); ?>">
+    <form method="post" id="frmPost" name="frmPost" action="<?php echo _url(_cfg('baseDir') . '/post/setup/action.php'); ?>">
         <input type="hidden" name="hidLang" value="<?php echo $lang; ?>" />
         <input type="hidden" name="hidEditId" id="hidEditId" value="<?php echo $id; ?>" />
         <div class="message error"></div>
@@ -39,7 +39,7 @@
         </div>
         <div class="row">
             <button type="submit" class="submit button green" id="btnSave" name="btnSave"><?php echo _t('Save'); ?></button>
-            <a href="<?php echo _url('admin/post/list'); ?>">
+            <a href="<?php echo _url(_cfg('baseDir') . '/post/list'); ?>">
                 <button type="button" class="button" id="btnCancel" name="btnCancel"><?php echo _t('Cancel'); ?></button>
             </a>
         </div>

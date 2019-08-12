@@ -50,7 +50,7 @@ if (sizeof($_POST)) {
 
         if ($success) {
             form_set('success', true);
-            form_set('redirect', _url('admin/post'));
+            form_set('redirect', _url(_cfg('baseDir') . '/post'));
         }
 
     } else {

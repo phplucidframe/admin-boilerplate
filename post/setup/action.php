@@ -73,7 +73,7 @@ if (sizeof($_POST)) {
         }
         if ($success) {
             form_set('success', true);
-            form_set('redirect', _url('admin/post/list'));
+            form_set('redirect', _url(_cfg('baseDir') . '/post/list'));
         }
     } else {
         form_set('error', validation_get('errors'));

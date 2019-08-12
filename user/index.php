@@ -1,2 +1,2 @@
 <?php
-_redirect('admin/user/list');
+_redirect(_cfg('baseDir') . '/user/list');

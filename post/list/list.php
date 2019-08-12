@@ -56,7 +56,7 @@ if ($qb->getNumRows()) {
             ?>
             <tr>
                 <td class="tableLeft colAction">
-                    <a href="<?php echo _url('admin/post/setup', array($row->postId, 'lang' => $lang)); ?>" class="edit" title="Edit" >
+                    <a href="<?php echo _url(_cfg('baseDir') . '/post/setup', array($row->postId, 'lang' => $lang)); ?>" class="edit" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
@@ -78,7 +78,7 @@ if ($qb->getNumRows()) {
 <?php
 } else {
 ?>
-    <div class="no-record"><?php echo _t("You don't have any post! %sLet's go make a new post!%s", '<a href="'._url('admin/post/setup').'">', '</a>'); ?></div>
+    <div class="no-record"><?php echo _t("You don't have any post! %sLet's go make a new post!%s", '<a href="'._url(_cfg('baseDir') . '/post/setup').'">', '</a>'); ?></div>
 <?php
 }
 

@@ -76,7 +76,7 @@ if (sizeof($_POST)) {
 
         if ($success) {
             form_set('success', true);
-            form_set('redirect', _url('admin/user/list'));
+            form_set('redirect', _url(_cfg('baseDir') . '/user/list'));
         }
     } else {
         form_set('error', validation_get('errors'));

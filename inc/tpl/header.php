@@ -10,13 +10,13 @@
             <ul id="user-menu">
                 <li class="greeting">Hello, <?php echo $_auth->fullName; ?></li>
                 <li>
-                    <a href="<?php echo _url('admin/user/setup/', array($_auth->uid)); ?>"><?php echo _t('Edit My Account'); ?></a>
+                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup/', array($_auth->uid)); ?>"><?php echo _t('Edit My Account'); ?></a>
                 </li>
                 <li>
                     <a href="#"><?php echo _t('Change Password'); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo _url('admin/logout', array($_auth->timestamp)); ?>"><?php echo _t('Logout'); ?></a>
+                    <a href="<?php echo _url(_cfg('baseDir') . '/logout', array($_auth->timestamp)); ?>"><?php echo _t('Logout'); ?></a>
                 </li>
             </ul>
         </div>
@@ -25,14 +25,14 @@
                 <a href="<?php echo _url('home'); ?>" id="logo"><?php echo _cfg('siteName'); ?></a>
                 <ul id="menu" class="clearfix">
                     <li>
-                        <a href="<?php echo _url('admin/post'); ?>" <?php if (_arg(1) == 'post') echo 'class="active"'; ?>><?php echo _t('Posts'); ?></a>
+                        <a href="<?php echo _url(_cfg('baseDir') . '/post'); ?>" <?php if (_arg(1) == 'post') echo 'class="active"'; ?>><?php echo _t('Posts'); ?></a>
                     </li>
                     <li>
-                        <a href="<?php echo _url('admin/category'); ?>" <?php if (_arg(1) == 'category') echo 'class="active"'; ?>><?php echo _t('Categories'); ?></a>
+                        <a href="<?php echo _url(_cfg('baseDir') . '/category'); ?>" <?php if (_arg(1) == 'category') echo 'class="active"'; ?>><?php echo _t('Categories'); ?></a>
                     </li>
                     <?php if (auth_isAdmin()) { ?>
                     <li>
-                        <a href="<?php echo _url('admin/user'); ?>" <?php if (_arg(1) == 'user') echo 'class="active"'; ?>><?php echo _t('Users'); ?></a>
+                        <a href="<?php echo _url(_cfg('baseDir') . '/user'); ?>" <?php if (_arg(1) == 'user') echo 'class="active"'; ?>><?php echo _t('Users'); ?></a>
                     </li>
                     <?php } ?>
                 </ul>

@@ -13,7 +13,7 @@ if ($id) {
     if ($post) {
         $post = _getTranslationStrings($post, array('postTitle', 'postBody'), $lang);
     } else {
-        _redirect('admin/property/list');
+        _redirect(_cfg('baseDir') . '/property/list');
     }
 }
 

@@ -9,7 +9,7 @@ if ($id) {
     $pageTitle = _t('Edit Post');
 } else {
     if ($lang != _defaultLang()) {
-        _redirect('admin/post/setup/', null, _defaultLang());
+        _redirect(_cfg('baseDir') . '/post/setup/', null, _defaultLang());
     }
 }
 
