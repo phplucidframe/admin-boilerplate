@@ -4,4 +4,4 @@ The example boilerplate code for [PHPLucidFrame](http://www.phplucidframe.com) a
 
 ### Installation
 
-- https://github.com/phplucidframe/phplucidframe/wiki/Configuration-for-The-Sample-Administration-Module-(version-2.0-and-above)
+- https://github.com/phplucidframe/phplucidframe/wiki/Configuration-for-The-Sample-Administration-Module-(version-2.0)
