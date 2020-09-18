@@ -1,0 +1,35 @@
+#top-bar #user-menu .greeting {
+    display: block;
+}
+
+#top-bar .greeting.mobile {
+    display: none;
+}
+
+@media screen and ( min-width : 408px ) {
+    #logo img.fluid {
+        height: 28px;
+    }
+}
+
+@media screen and ( max-width : 480px ) {
+    #top-bar #user-menu {
+        clear: both;
+    }
+
+    #top-bar #user-menu .greeting {
+        display: none;
+    }
+
+    #top-bar .greeting.mobile {
+        display: block;
+        float: right;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+
+    ul.social-icons {
+        float: none;
+        margin-top: 5px;
+    }
+}
