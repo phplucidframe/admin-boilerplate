@@ -129,12 +129,12 @@ LC.Page.Category = {
         if ($data) {
             var $form = $('#frmCategory');
             $form.find('#hidEditId').val( id );
-            $form.find('input[name=txtName]').val($data.catName);
+            $form.find('input[name=txtName]').val($data.name);
             // load data for the other translation text boxes
-            if (typeof $data.catName_i18n !== 'undefined') {
-                for (var c in $data.catName_i18n) {
-                    if ($data.catName_i18n.hasOwnProperty(c)) {
-                        $form.find('input[name=txtName_'+c+']').val($data.catName_i18n[c]);
+            if (typeof $data.name_i18n !== 'undefined') {
+                for (var c in $data.name_i18n) {
+                    if ($data.name_i18n.hasOwnProperty(c)) {
+                        $form.find('input[name=txtName_'+c+']').val($data.name_i18n[c]);
                     }
                 }
             }

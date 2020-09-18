@@ -27,24 +27,24 @@ if (sizeof($_POST)) {
         if ($hidEditId) {
             # edit
             $data = array(
-                'postId' => $hidEditId,
-                'postTitle_'.$hidLang => $txtTitle,
-                'postBody_'.$hidLang  => $txtBody,
-                'catId' => $cboCategory,
+                'id'                => $hidEditId,
+                'title_'.$hidLang   => $txtTitle,
+                'body_'.$hidLang    => $txtBody,
+                'cat_id'            => $cboCategory,
             );
 
             if ($hidLang == $lc_defaultLang) {
-                # default langugage
+                # default language
                 $useSlug = true;
-                $data['postTitle']  = $txtTitle;
-                $data['postBody']   = $txtBody;
+                $data['title']  = $txtTitle;
+                $data['body']   = $txtBody;
             } else {
                 $useSlug = false;
             }
 
             if (isset($txtSlug) && $txtSlug) {
                 # if user entered slug manually
-                $postSlug = _slug($txtSlug, $table = 'post', array('postId !=' => $hidEditId));
+                $postSlug = _slug($txtSlug, 'post', array('id !=' => $hidEditId));
                 $data['slug'] = $postSlug;
             }
 
@@ -54,17 +54,17 @@ if (sizeof($_POST)) {
         } else {
             # new
             $data = array(
-                'postTitle' => $txtTitle,
-                'postBody' => $txtBody,
-                'postTitle_'.$hidLang => $txtTitle,
-                'postBody_'.$hidLang  => $txtBody,
-                'catId' => $cboCategory,
-                'uid' => $_auth->uid
+                'title'             => $txtTitle,
+                'body'              => $txtBody,
+                'title_'. $hidLang  => $txtTitle,
+                'body_'. $hidLang   => $txtBody,
+                'cat_id'            => $cboCategory,
+                'user_id'           => $_auth->id
             );
 
             if (isset($txtSlug) && $txtSlug) {
                 # if user entered slug manually
-                $postSlug = _slug($txtSlug, $table = 'post', $condition = null);
+                $postSlug = _slug($txtSlug, 'post');
                 $data['slug'] = $postSlug;
             }
             if (db_insert('post', $data)) {

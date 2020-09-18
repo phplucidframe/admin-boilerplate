@@ -17,7 +17,7 @@ $pager = _pager()
 # List query
 $qb = db_select('category', 'c')
     ->where()->condition('deleted', null)
-    ->orderBy('catName')
+    ->orderBy('name')
     ->limit($pager->get('offset'), $pager->get('itemsPerPage'));
 
 if ($qb->getNumRows()) {
@@ -44,28 +44,28 @@ if ($qb->getNumRows()) {
         <?php
         $data = array();
         while ($row = $qb->fetchRow()) {
-            $data[$row->catId] = (array) _getTranslationStrings($row, 'catName');
+            $data[$row->id] = (array) _getTranslationStrings($row, 'name');
             ?>
             <tr>
                 <td class="tableLeft colAction">
-                    <a href="#" class="edit" title="Edit" rel="<?php echo $row->catId; ?>">
+                    <a href="#" class="edit" title="Edit" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
                 <td class="colAction">
-                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->catId; ?>">
+                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>
                 <td class="colName">
-                    <?php echo $row->catName; ?>
+                    <?php echo $row->name; ?>
                 </td>
                 <?php if ($langs) { ?>
                     <?php foreach ($langs as $lcode => $lname) { ?>
                     <td class="colName <?php echo $lcode; ?>">
                         <?php
                         $lcode = _queryLang($lcode);
-                        echo isset($data[$row->catId]['catName_i18n'][$lcode]) ? $data[$row->catId]['catName_i18n'][$lcode] : '';
+                        echo isset($data[$row->id]['name_i18n'][$lcode]) ? $data[$row->id]['name_i18n'][$lcode] : '';
                         ?>
                     </td>
                     <?php } ?>

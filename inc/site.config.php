@@ -9,3 +9,5 @@ $lc_translationEnabled = false;
 $lc_cleanURL = true;
 # $lc_itemsPerPage: number of items per page in pager
 $lc_itemsPerPage = 20;
+# $lc_reqSign: form input required sign
+$lc_reqSign = '<span class="required">*</span>';

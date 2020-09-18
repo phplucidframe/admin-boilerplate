@@ -16,21 +16,21 @@ $pager = _pager()
     ->calculate();
 
 $qb = db_select('post', 'p')
-    ->join('category', 'c', 'p.catId = c.catId')
-    ->join('user', 'u', 'p.uid = u.uid')
+    ->join('category', 'c', 'p.cat_id = c.id')
+    ->join('user', 'u', 'p.user_id = u.id')
     ->fields('p', array(
-        'postId', 'created', 'postTitle', 'postBody',
-        array('postTitle_'.$lang, 'postTitle_i18n'),
-        array('postBody_'.$lang, 'postBody_i18n')
+        'id', 'created', 'title', 'body',
+        array('title_'.$lang, 'title_i18n'),
+        array('body_'.$lang, 'body_i18n')
     ))
     ->fields('c', array(
-        'catName',
-        array('catName_'.$lang, 'catName_i18n')
+        array('name', 'catName'),
+        array('name_'.$lang, 'catName_i18n')
     ))
-    ->fields('u', array('fullName'))
+    ->fields('u', array('full_name'))
     ->where()->condition('p.deleted', null)
     ->orderBy('p.created', 'DESC')
-    ->orderBy('u.fullName')
+    ->orderBy('u.full_name')
     ->limit($pager->get('offset'), $pager->get('itemsPerPage'));
 
 $lang = _urlLang($lang);
@@ -50,23 +50,23 @@ if ($qb->getNumRows()) {
         </tr>
         <?php
         while ($row = $qb->fetchRow()) {
-            $row->postTitle = ($row->postTitle_i18n) ? $row->postTitle_i18n : $row->postTitle;
-            $row->postBody  = ($row->postBody_i18n) ? $row->postBody_i18n : $row->postBody;
-            $row->catName   = ($row->catName_i18n) ? $row->catName_i18n : $row->catName;
+            $row->title     = $row->title_i18n ?: $row->title;
+            $row->body      = $row->body_i18n ?: $row->body;
+            $row->catName   = $row->catName_i18n ?: $row->catName;
             ?>
             <tr>
                 <td class="tableLeft colAction">
-                    <a href="<?php echo _url(_cfg('baseDir') . '/post/setup', array($row->postId, 'lang' => $lang)); ?>" class="edit" title="Edit" >
+                    <a href="<?php echo _url(_cfg('baseDir') . '/post/setup', array($row->id, 'lang' => $lang)); ?>" class="edit" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
                 <td class="colAction">
-                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->postId; ?>">
+                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>
-                <td class="colTitle <?php echo $lang; ?>"><?php echo $row->postTitle;?></td>
-                <td class=""><?php echo $row->fullName; ?></td>
+                <td class="colTitle <?php echo $lang; ?>"><?php echo $row->title;?></td>
+                <td class=""><?php echo $row->full_name; ?></td>
                 <td class="<?php echo $lang; ?>"><?php echo $row->catName; ?></td>
                 <td class=""><?php echo _fdateTime($row->created); ?></td>
             </tr>

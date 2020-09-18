@@ -7,6 +7,6 @@ if (sizeof($_POST)) {
     extract($post);
     if (isset($action) && $action == 'delete' && isset($hidDeleteId) && $hidDeleteId) {
         # DELETE
-        db_delete('post', array('postId' => $hidDeleteId));
+        db_delete('post', array('id' => $hidDeleteId));
     }
 }

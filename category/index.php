@@ -8,7 +8,7 @@ $pageTitle = _t('Categories');
 <head>
     <title><?php echo _title($pageTitle); ?></title>
     <?php include( _i('inc/tpl/head.php') ); ?>
-    <?php _css('base.my.css'); ?>
+    <?php _css('base.'._getLang().'.css'); ?>
 </head>
 <body>
     <?php include('view.php'); ?>

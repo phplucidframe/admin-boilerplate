@@ -19,7 +19,7 @@ $pager = _pager()
 $qb = db_select('user', 'u')
     ->where()->condition('deleted', null)
     ->orderBy('role')
-    ->orderBy('fullName')
+    ->orderBy('full_name')
     ->limit($pager->get('offset'), $pager->get('itemsPerPage'));
 
 if ($qb->getNumRows()) {
@@ -32,38 +32,24 @@ if ($qb->getNumRows()) {
             <td><?php echo _t('Email') ?></td>
             <td><?php echo _t('User Role') ?></td>
         </tr>
-        <?php
-        while ($row = $qb->fetchRow()) {
-            // Edit & delete flag
-            $edit = true;
-            $delete = true;
-            $action = '';
-        ?>
+        <?php while ($row = $qb->fetchRow()) { ?>
             <tr>
                 <td class="tableLeft colAction">
-                    <?php if ($row->isMaster) { ?>
-                        <?php $delete = false; ?>
-                        <?php $action = 'onclick="LC.Page.User.List.warning()"'; ?>
-                    <?php } ?>
-                    <?php if ($edit) { ?>
-                        <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->uid)); ?>" class="edit" title="Edit" >
-                            <span><?php echo _t('Edit'); ?></span>
-                        </a>
-                    <?php } else { ?>
-                        <span class="edit disabled"></span>
-                    <?php } ?>
+                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->id)); ?>" class="edit" title="Edit" >
+                        <span><?php echo _t('Edit'); ?></span>
+                    </a>
                 </td>
                 <td class="colAction">
-                    <?php if ($delete): ?>
-                        <a href="#" class="delete" title="Delete" rel="<?php echo $row->uid; ?>">
+                    <?php if ($row->is_master): ?>
+                        <span class="delete disabled" onclick="LC.Page.User.List.warning()"></span>
+                    <?php else: ?>
+                        <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
                             <span><?php echo _t('Delete'); ?></span>
                         </a>
-                    <?php else: ?>
-                        <span class="delete disabled" <?php echo $action; ?>></span>
                     <?php endif ?>
                 </td>
                 <td class="colFullName">
-                    <div class="overflow"><?php echo $row->fullName; ?></div>
+                    <div class="overflow"><?php echo $row->full_name; ?></div>
                 </td>
                 <td class="colUsername">
                     <div class="overflow"><?php echo $row->username; ?></div>
@@ -71,13 +57,9 @@ if ($qb->getNumRows()) {
                 <td class="colEmail">
                     <div class="overflow"><?php echo $row->email; ?></div>
                 </td>
-                <td class="colRole">
-                    <?php echo ucfirst($row->role); ?>
-                </td>
+                <td class="colRole"><?php echo ucfirst($row->role); ?></td>
             </tr>
-        <?php
-        }
-    ?>
+        <?php } ?>
     </table>
     <div class="pager-container"><?php echo $pager->display(); ?></div>
 <?php

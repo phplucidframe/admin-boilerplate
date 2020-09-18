@@ -6,7 +6,7 @@ if (sizeof($_POST)) {
 
     if (isset($action) && $action == 'delete' && isset($hidDeleteId) && $hidDeleteId) {
         # DELETE category
-        if (db_delete('category', array('catId' => $hidDeleteId))) {
+        if (db_delete('category', array('id' => $hidDeleteId))) {
             $success = true;
         }
     } else {
@@ -23,21 +23,21 @@ if (sizeof($_POST)) {
         if (form_validate($validations)) {
             if ($hidEditId) {
                 $data = array(
-                    'catId'      => $hidEditId,
-                    'catName' => $txtName
+                    'id' => $hidEditId,
+                    'name' => $txtName
                 );
                 # Get translation strings for "catName"
-                $data = array_merge($data, _postTranslationStrings($post, array('catName' => 'txtName')));
+                $data = array_merge($data, _postTranslationStrings($post, array('name' => 'txtName')));
 
                 if (db_update('category', $data, false)) {
                     $success = true;
                 }
             } else {
                 $data = array(
-                    'catName' => $txtName,
+                    'name' => $txtName,
                 );
                 # Get translation strings for "pptName"
-                $data = array_merge($data, _postTranslationStrings($post, array('catName' => 'txtName')));
+                $data = array_merge($data, _postTranslationStrings($post, array('name' => 'txtName')));
 
                 if (db_insert('category', $data)) {
                     $success = true;

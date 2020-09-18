@@ -27,12 +27,12 @@ if (sizeof($_POST)) {
             ->condition('LOWER(username)', strtolower($txtUsername))
             ->getSingleResult();
         if ($user) {
-            if (($user->username === 'admin' && $user->isMaster) || /* this condition is just for demo */
+            if (($user->username === 'admin' && $user->is_master) || /* this condition is just for demo */
                 ($user->password && _decrypt($user->password) == $txtPwd)) {
                 $success = true;
                 unset($user->password);
                 # Create the Authentication object
-                auth_create($user->uid, $user);
+                auth_create($user->id, $user);
             } else {
                 # Other follow-up errors checkup (if any)
                 validation_addError('Password', _t('Password does not match.'));

@@ -5,12 +5,13 @@
 ?>
 <div id="wrapper">
     <div id="page-container">
-        <div id="top-bar">
+        <div id="top-bar" class="clearfix">
             <a href="<?php echo _url('home'); ?>"><?php echo _t('Visit Site'); ?></a>
-            <ul id="user-menu">
-                <li class="greeting">Hello, <?php echo $_auth->fullName; ?></li>
+            <div class="greeting mobile">Hello, <?php echo $_auth->full_name; ?></div>
+            <ul id="user-menu" class="clearfix">
+                <li class="greeting">Hello, <?php echo $_auth->full_name; ?></li>
                 <li>
-                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup/', array($_auth->uid)); ?>"><?php echo _t('Edit My Account'); ?></a>
+                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup/', array($_auth->id)); ?>"><?php echo _t('Edit My Account'); ?></a>
                 </li>
                 <li>
                     <a href="#"><?php echo _t('Change Password'); ?></a>
@@ -22,7 +23,9 @@
         </div>
         <div id="header">
             <div class="container clearfix">
-                <a href="<?php echo _url('home'); ?>" id="logo"><?php echo _cfg('siteName'); ?></a>
+                <a href="<?php echo _url('home'); ?>" id="logo">
+                    <img src="<?php echo _img('logo.png'); ?>" class="fluid" alt="<?php echo _cfg('siteName'); ?>" />
+                </a>
                 <ul id="menu" class="clearfix">
                     <li>
                         <a href="<?php echo _url(_cfg('baseDir') . '/post'); ?>" <?php if (_arg(1) == 'post') echo 'class="active"'; ?>><?php echo _t('Posts'); ?></a>

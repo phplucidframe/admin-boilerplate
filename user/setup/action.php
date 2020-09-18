@@ -48,27 +48,30 @@ if (sizeof($_POST)) {
     if (form_validate($validations)) {
         if ($hidEditId) {
             $data = array(
-                'uid'       => $hidEditId,
-                'fullName'  => $txtFullName,
+                'id'        => $hidEditId,
+                'full_name' => $txtFullName,
                 'username'  => $txtUsername,
                 'email'     => $txtEmail,
                 'role'      => $cboRole,
             );
+
             if (!empty($txtPwd)) {
                 $data['password'] = $txtPwd;
             }
+
             if (db_update('user', $data)) {
                 $success = true;
             }
         } else {
             $auth = $_auth;
             $data = array(
-                'fullName'  => $txtFullName,
+                'full_name' => $txtFullName,
                 'username'  => $txtUsername,
                 'email'     => $txtEmail,
                 'password'  => _encrypt($txtPwd),
-                'role'  => $cboRole,
+                'role'      => $cboRole,
             );
+
             if (db_insert('user', $data)) {
                 $success = true;
             }
@@ -82,4 +85,5 @@ if (sizeof($_POST)) {
         form_set('error', validation_get('errors'));
     }
 }
+
 form_respond('frmUser');

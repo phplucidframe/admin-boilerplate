@@ -1,12 +1,12 @@
 <?php
 $user = new stdClass();
-$user->fullName = '';
+$user->full_name = '';
 $user->username = '';
 $user->email    = '';
 $user->role     = '';
 
 if ($id) {
     $user = db_select('user')
-        ->where()->condition('uid', $id)
+        ->where()->condition('id', $id)
         ->getSingleResult();
 }
