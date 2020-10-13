@@ -11,7 +11,7 @@ if ($id) {
         <input type="hidden" name="hidEditId" id="hidEditId" value="<?php echo $id; ?>" />
         <div class="message error"></div>
         <div class="row">
-            <label><?php echo _t('Title').' ('._langName($lang).')'.$lc_reqSign; ?></label>
+            <label><?php echo _t('Title').' ('._langName($lang).')' ?> <span class="required">*</span></label>
             <div><input type="text" name="txtTitle" id="txtTitle" value="<?php echo $post->title;?>" class="<?php echo $lang; ?> fluid-100" /></div>
         </div>
         <?php if (auth_isAdmin() && $lang == $lc_defaultLang) { ?>
@@ -21,7 +21,7 @@ if ($id) {
         </div>
         <?php } ?>
         <div class="row">
-            <label><?php echo _t('Category') . $lc_reqSign; ?></label>
+            <label><?php echo _t('Category') ?> <span class="required">*</span></label>
             <div>
                 <select name="cboCategory" class="<?php echo $lang; ?> fluid-100">
                     <option value=""><?php echo _t('Select Category'); ?></option>
@@ -40,7 +40,7 @@ if ($id) {
             </div>
         </div>
         <div class="row">
-            <label><?php echo _t('Body').' ('._langName($lang).')' . $lc_reqSign; ?></label>
+            <label><?php echo _t('Body').' ('._langName($lang).')' ?> <span class="required">*</span></label>
             <div>
                 <textarea id="txtBody" name="txtBody" rows="15" class="<?php echo $lang; ?> fluid-100"><?php echo $post->body; ?></textarea>
             </div>

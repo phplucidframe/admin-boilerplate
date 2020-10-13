@@ -21,7 +21,7 @@
                 <td class="label">
                     <?php echo _t('Name'); ?>
                     <label class="lang">(<?php echo _langName(); ?>)</label>
-                    <?php echo $lc_reqSign; ?>
+                    <span class="required">*</span>
                 </td>
                 <td class="labelSeparator">:</td>
                 <td class="entry">
