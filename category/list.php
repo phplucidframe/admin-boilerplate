@@ -8,8 +8,8 @@ $rowCount = db_count('category')
 
 # Prerequisite for the Pager
 $pager = _pager()
-    ->set('itemsPerPage', $lc_itemsPerPage)
-    ->set('pageNumLimit', $lc_pageNumLimit)
+    ->set('itemsPerPage', _cfg('itemsPerPage'))
+    ->set('pageNumLimit', _cfg('pageNumLimit'))
     ->set('total', $rowCount)
     ->set('ajax', true)
     ->calculate();
