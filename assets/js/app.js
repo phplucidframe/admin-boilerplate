@@ -16,7 +16,7 @@ LC.Page.Post = {
                 modal: true,
                 autoOpen: false,
                 resizable: false,
-                height: 133,
+                minHeight: 135,
                 buttons: {
                     OK: function() {
                         $(this).dialog('close');
@@ -71,7 +71,7 @@ LC.Page.Category = {
             modal: true,
             autoOpen: false,
             resizable: false,
-            height: 133,
+            minHeight: 135,
             buttons: {
                 OK: function() {
                     $(this).dialog('close');
@@ -180,7 +180,7 @@ LC.Page.User = {
                 modal: true,
                 autoOpen: false,
                 resizable: false,
-                height: 133,
+                minHeight: 135,
                 buttons: {
                     OK: function() {
                         $(this).dialog('close');
@@ -191,6 +191,7 @@ LC.Page.User = {
                     }
                 }
             });
+
             /* Add/Edit  */
             $('#dialog-warning').dialog({
                 modal: true,
@@ -204,9 +205,11 @@ LC.Page.User = {
                     }
                 }
             });
+
             $('#btnNew').click(function() {
                 window.location = LC.Page.url(LC.vars.baseDir + '/user/setup');
             });
+
             /* Load list */
             LC.Page.User.List.list();
         },
@@ -214,11 +217,21 @@ LC.Page.User = {
         list : function(param) {
             $('#dialog-confirm').dialog( 'close' );
             $('#dialog-warning').dialog( 'close' );
+
             LC.Page.request( 'list', LC.Page.User.List.url + 'list.php', param );
+
             LC.Page.afterRequest = function () {
                 $('.list .colAction .delete').on('click', function (e) {
                     e.preventDefault();
-                    LC.Page.User.List.remove($(this).attr('rel'));
+
+                    if ($(this).hasClass('disabled')) {
+                        LC.Page.User.List.warning();
+                    } else {
+                        var id = $(this).attr('rel');
+                        if (id) {
+                            LC.Page.User.List.remove(id);
+                        }
+                    }
                 });
             };
         },

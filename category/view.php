@@ -7,7 +7,9 @@
 <input type="hidden" id="hidDeleteId" value="" />
 <!-- Confirm Delete Dialog -->
 <div id="dialog-confirm" class="dialog" title="<?php echo _t('Confirm Category Delete'); ?>" style="display:none">
-    <div class="msg-body"><?php echo _t('Are you sure you want to delete?'); ?></div>
+    <div class="msg-body">
+        <p class="center"><?php echo _t('Are you sure you want to delete?'); ?></p>
+    </div>
 </div>
 <!-- Category Entry Form -->
 <div id="dialog-category" class="dialog" title="<?php echo _t('Category'); ?>" style="display:none">

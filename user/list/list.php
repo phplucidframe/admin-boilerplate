@@ -32,7 +32,7 @@ if ($qb->getNumRows()) {
             <td><?php echo _t('Email') ?></td>
             <td><?php echo _t('User Role') ?></td>
         </tr>
-        <?php while ($row = $qb->fetchRow()) { ?>
+        <?php while ($row = $qb->fetchRow()): ?>
             <tr>
                 <td class="tableLeft colAction">
                     <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->id)); ?>" class="edit" title="Edit" >
@@ -41,7 +41,7 @@ if ($qb->getNumRows()) {
                 </td>
                 <td class="colAction">
                     <?php if ($row->is_master): ?>
-                        <span class="delete disabled" onclick="LC.Page.User.List.warning()"></span>
+                        <span class="delete disabled"></span>
                     <?php else: ?>
                         <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
                             <span><?php echo _t('Delete'); ?></span>
@@ -59,12 +59,14 @@ if ($qb->getNumRows()) {
                 </td>
                 <td class="colRole"><?php echo ucfirst($row->role); ?></td>
             </tr>
-        <?php } ?>
+        <?php endwhile; ?>
     </table>
     <div class="pager-container"><?php echo $pager->display(); ?></div>
 <?php
 } else {
 ?>
-    <div class="no-record"><?php echo _t("You don't have any user! %sLet's go create a new user!%s", '<a href="'._url(_cfg('baseDir') . '/user/setup').'">', '</a>'); ?></div>
+    <div class="no-record">
+        <?php echo _t("You don't have any user! %sLet's go create a new user!%s", '<a href="'._url(_cfg('baseDir') . '/user/setup').'">', '</a>'); ?>
+    </div>
 <?php
 }
