@@ -1,9 +1,6 @@
 <?php
-$user = new stdClass();
-$user->full_name = '';
-$user->username = '';
-$user->email    = '';
-$user->role     = '';
+
+$user = _entity('user');
 
 if ($id) {
     $user = db_select('user')

@@ -1,10 +1,6 @@
 <?php
-$post = new stdClass();
 
-$post->body = '';
-$post->title = '';
-$post->slug = '';
-$post->cat_id = '';
+$post = _entity('post');
 
 if ($id) {
     $post = db_select('post', 'p')
