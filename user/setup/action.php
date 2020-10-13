@@ -13,11 +13,10 @@ if (sizeof($_POST)) {
         'txtUsername' => array(
             'caption'   => _t('Username'),
             'value'     => $txtUsername,
-            'rules'     => array('mandatory', 'username', 'validate_checkDuplicateUsername'),
-            'parameters'=> array($hidEditId),
-            'messages'  => array(
-                'validate_checkDuplicateUsername' => _t('Username already exists. Please try another one.')
-            )
+            'rules'     => array('mandatory', 'username', 'unique'),
+            'table'     => 'user',
+            'field'     => 'username',
+            'id'        => $hidEditId,
         ),
         'txtEmail' => array(
             'caption'   => _t('Email'),
