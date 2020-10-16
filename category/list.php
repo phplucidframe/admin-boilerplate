@@ -1,24 +1,6 @@
 <?php
-$get = _get($_GET);
 
-# Count query for the pager
-$rowCount = db_count('category')
-    ->where()->condition('deleted', null)
-    ->fetch();
-
-# Prerequisite for the Pager
-$pager = _pager()
-    ->set('itemsPerPage', _cfg('itemsPerPage'))
-    ->set('pageNumLimit', _cfg('pageNumLimit'))
-    ->set('total', $rowCount)
-    ->set('ajax', true)
-    ->calculate();
-
-# List query
-$qb = db_select('category', 'c')
-    ->where()->condition('deleted', null)
-    ->orderBy('name')
-    ->limit($pager->get('offset'), $pager->get('itemsPerPage'));
+list($qb, $pager, $total) = db_findWithPager('category', array('deleted' => null), array('name' => 'asc'));
 
 if ($qb->getNumRows()) {
     $langs = _langs(_defaultLang());

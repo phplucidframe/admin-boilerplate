@@ -1,26 +1,6 @@
 <?php
-$get = _get($_GET);
 
-$args = array();
-
-# Count query for the pager
-$rowCount = db_count('category')
-    ->where()->condition('deleted', null)
-    ->fetch();
-
-# Prerequisite for the Pager
-$pager = _pager()
-    ->set('itemsPerPage', _cfg('itemsPerPage'))
-    ->set('pageNumLimit', _cfg('pageNumLimit'))
-    ->set('total', $rowCount)
-    ->set('ajax', true)
-    ->calculate();
-
-$qb = db_select('user', 'u')
-    ->where()->condition('deleted', null)
-    ->orderBy('role')
-    ->orderBy('full_name')
-    ->limit($pager->get('offset'), $pager->get('itemsPerPage'));
+list($qb, $pager, $total) = db_findWithPager('user', array('deleted' => null), array('role' => 'asc', 'full_name' => 'asc'));
 
 if ($qb->getNumRows()) {
 ?>
