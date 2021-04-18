@@ -7,17 +7,17 @@
     <div id="page-container">
         <div id="top-bar" class="clearfix">
             <a href="<?php echo _url('home'); ?>"><?php echo _t('Visit Site'); ?></a>
-            <div class="greeting mobile">Hello, <?php echo $_auth->full_name; ?></div>
+            <div class="greeting mobile">Hello, <?php echo _app('auth')->full_name; ?></div>
             <ul id="user-menu" class="clearfix">
-                <li class="greeting">Hello, <?php echo $_auth->full_name; ?></li>
+                <li class="greeting">Hello, <?php echo _app('auth')->full_name; ?></li>
                 <li>
-                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup/', array($_auth->id)); ?>"><?php echo _t('Edit My Account'); ?></a>
+                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup/', array(_app('auth')->id)); ?>"><?php echo _t('Edit My Account'); ?></a>
                 </li>
                 <li>
                     <a href="#"><?php echo _t('Change Password'); ?></a>
                 </li>
                 <li>
-                    <a href="<?php echo _url(_cfg('baseDir') . '/logout', array($_auth->timestamp)); ?>"><?php echo _t('Logout'); ?></a>
+                    <a href="<?php echo _url(_cfg('baseDir') . '/logout', array(_app('auth')->token)); ?>"><?php echo _t('Logout'); ?></a>
                 </li>
             </ul>
         </div>
