@@ -1,6 +1,4 @@
 <?php
-include( _i('inc/authenticate.php') );
-
 $id = _arg(3);
 
 if ($id) {

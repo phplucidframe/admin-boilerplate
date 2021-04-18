@@ -1,7 +1,4 @@
 <?php
-include( _i('inc/authenticate.php') );
-
-$id = _arg(3);
 $pageTitle = _t('Users');
 ?>
 <!DOCTYPE html>

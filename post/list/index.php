@@ -1,5 +1,4 @@
 <?php
-include( _i('inc/authenticate.php') );
 $pageTitle = _t('Posts');
 ?>
 <!DOCTYPE html>

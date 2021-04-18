@@ -1,10 +1,9 @@
 <?php
-include( _i('inc/authenticate.php') );
-
 $lang       = _getLang();
 $pageTitle  = _t('Add New Post');
 $id         = 0;
 $id         = _arg(3);
+
 if ($id) {
     $pageTitle = _t('Edit Post');
 } else {
