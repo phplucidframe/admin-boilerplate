@@ -16,7 +16,7 @@
     <form method="post" id="frmCategory" action="<?php echo _url(_cfg('baseDir') . '/category/action.php'); ?>">
         <div class="message error"></div>
         <input type="hidden" id="hidEditId" name="hidEditId" />
-        <table cellpadding="0" cellspacing="0" class="form">
+        <table cellpadding="0" cellspacing="0" class="form fluid">
             <tr>
                 <td class="label">
                     <?php echo _t('Name'); ?>
@@ -25,7 +25,7 @@
                 </td>
                 <td class="labelSeparator">:</td>
                 <td class="entry">
-                    <input type="text" name="txtName" id="txtName" size="30" />
+                    <input type="text" name="txtName" id="txtName" class="lc-form-input fluid-100" />
                 </td>
             </tr>
             <?php $langs = _langs(_defaultLang()); ?>
@@ -40,15 +40,15 @@
                 <?php $lcode = _queryLang($lcode); ?>
                 <td class="labelSeparator">:</td>
                 <td class="entry">
-                    <input type="text" name="txtName_<?php echo $lcode; ?>" id="txtName_<?php echo $lcode; ?>" size="30" />
+                    <input type="text" name="txtName_<?php echo $lcode; ?>" id="txtName_<?php echo $lcode; ?>" class="lc-form-input fluid-100" />
                 </td>
             </tr>
             <?php } ?>
             <tr>
                 <td colspan="2">
                 <td class="entry">
-                    <button type="button" class="jqbutton submit" id="btnSave" name="btnSave"><?php echo _t('Save'); ?></button>
-                    <button type="button" class="jqbutton" id="btnCancel" name="btnCancel"><?php echo _t('Cancel'); ?></button>
+                    <button type="button" class="button jqbutton submit large green" id="btnSave" name="btnSave"><?php echo _t('Save'); ?></button>
+                    <button type="button" class="button jqbutton large" id="btnCancel" name="btnCancel"><?php echo _t('Cancel'); ?></button>
                 </td>
             </tr>
         </table>

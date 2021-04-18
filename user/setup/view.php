@@ -11,14 +11,14 @@
                         <td class="label"><?php echo _t('Full Name') ?> <span class="required">*</span></td>
                         <td class="labelSeparator">:</td>
                         <td class="entry">
-                            <input type="text" name="txtFullName" id="txtFullName" value="<?php echo $user->full_name; ?>" class="fluid-100" />
+                            <input type="text" name="txtFullName" id="txtFullName" value="<?php echo $user->full_name; ?>" class="lc-form-input fluid-100" />
                         </td>
                     </tr>
                     <tr>
                         <td class="label"><?php echo _t('Username') ?> <span class="required">*</span></td>
                         <td class="labelSeparator">:</td>
                         <td class="entry">
-                            <input type="text" name="txtUsername" id="txtUsername" value="<?php echo $user->username; ?>" class="fluid-100" />
+                            <input type="text" name="txtUsername" id="txtUsername" value="<?php echo $user->username; ?>" class="lc-form-input fluid-100" />
                         </td>
                     </tr>
                     <?php if (!$id): ?>
@@ -26,14 +26,14 @@
                             <td class="label"><?php echo _t('Password') ?> <span class="required">*</span></td>
                             <td class="labelSeparator">:</td>
                             <td class="entry">
-                                <input type="password" name="txtPwd" id="txtPwd" class="fluid-100" />
+                                <input type="password" name="txtPwd" id="txtPwd" class="lc-form-input fluid-100" />
                             </td>
                         </tr>
                         <tr class="tdPassword">
                             <td class="label"><?php echo _t('Confirm Password') ?> <span class="required">*</span></td>
                             <td class="labelSeparator">:</td>
                             <td class="entry">
-                                <input type="password" name="txtConfirmPwd" id="txtConfirmPwd" class="fluid-100" />
+                                <input type="password" name="txtConfirmPwd" id="txtConfirmPwd" class="lc-form-input fluid-100" />
                             </td>
                         </tr>
                     <?php endif ?>
@@ -41,14 +41,14 @@
                         <td class="label"><?php echo _t('Email') ?> <span class="required">*</span></td>
                         <td class="labelSeparator">:</td>
                         <td class="entry">
-                            <input type="text" name="txtEmail" id="txtEmail" value="<?php echo $user->email ?>" class="fluid-100" />
+                            <input type="text" name="txtEmail" id="txtEmail" value="<?php echo $user->email ?>" class="lc-form-input fluid-100" />
                         </td>
                     </tr>
                     <tr>
                         <td class="label"><?php echo _t('Role') ?> <span class="required">*</span></td>
                         <td class="labelSeparator">:</td>
                         <td class="entry">
-                            <select name="cboRole" class="fluid-100">
+                            <select name="cboRole" class="lc-form-input fluid-100">
                                 <option value="editor" <?php echo form_selected('cboRole', $user->role, 'editor') ?>>Editor</option>
                                 <option value="admin" <?php echo form_selected('cboRole', $user->role, 'admin') ?>>Administrator</option>
                             </select>

@@ -11,11 +11,13 @@
             <?php
             } ?>
             <div class="row">
-                <div class="entry"><input type="text" name="txtUsername" id="txtUsername" class="large full-width" placeholder="<?php echo _t('Username'); ?>" /></div>
+                <div class="entry">
+                    <input type="text" name="txtUsername" id="txtUsername" class="lc-form-input large full-width" placeholder="<?php echo _t('Username'); ?>" autofocus />
+                </div>
             </div>
             <div class="row">
                 <div class="entry pwd">
-                    <input type="password" name="txtPwd" id="txtPwd" class="large full-width" placeholder="<?php echo _t('Password'); ?>" />
+                    <input type="password" name="txtPwd" id="txtPwd" class="lc-form-input large full-width" placeholder="<?php echo _t('Password'); ?>" />
                     <a href="#" title="<?php echo _t('Forgot password?'); ?>">?</a>
                 </div>
             </div>
