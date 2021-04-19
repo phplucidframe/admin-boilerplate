@@ -1,4 +1,5 @@
-<?php include( _i('inc/tpl/header.php')) ; ?>
+<?php _app('view')->block('header') ?>
+
 <h4><?php echo _t($pageTitle); ?></h4>
 
 <div id="buttonZone">
@@ -20,4 +21,5 @@
         <p class="center"><?php echo _t('You cannot delete the default user account.'); ?></p>
     </div>
 </div>
-<?php include( _i('inc/tpl/footer.php') ); ?>
+
+<?php _app('view')->block('footer') ?>

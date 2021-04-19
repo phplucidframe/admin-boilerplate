@@ -5,11 +5,11 @@ $pageTitle = _t('Categories');
 <html lang="<?php echo _lang(); ?>">
 <head>
     <title><?php echo _title($pageTitle); ?></title>
-    <?php include( _i('inc/tpl/head.php') ); ?>
+    <?php _app('view')->block('head') ?>
     <?php _css('base.'._getLang().'.css'); ?>
 </head>
 <body>
-    <?php include('view.php'); ?>
+    <?php include('view.php') ?>
 </body>
 </html>
 <script language="javascript">

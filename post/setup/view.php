@@ -1,8 +1,9 @@
-<?php include( _i('inc/tpl/header.php') ); ?>
+<?php _app('view')->block('header') ?>
+
 <h4><?php echo $pageTitle; ?></h4>
 <?php
 if ($id) {
-    include( APP_ROOT . _cfg('baseDir') . '/inc/language-selection.php' );
+    _app('view')->block('language-selection');
 }
 ?>
 <div class="table clear">
@@ -42,7 +43,7 @@ if ($id) {
         <div class="row">
             <label><?php echo _t('Body').' ('._langName($lang).')' ?> <span class="required">*</span></label>
             <div>
-                <textarea id="txtBody" name="txtBody" rows="15" class="<?php echo $lang; ?> fluid-100"><?php echo $post->body; ?></textarea>
+                <textarea id="txtBody" name="txtBody" rows="15" class="<?php echo $lang; ?> lc-form-input fluid-100"><?php echo $post->body; ?></textarea>
             </div>
         </div>
         <div class="row">
@@ -54,4 +55,5 @@ if ($id) {
         <?php form_token(); ?>
     </form>
 </div>
-<?php include( _i('inc/tpl/footer.php') ); ?>
+
+<?php _app('view')->block('footer') ?>

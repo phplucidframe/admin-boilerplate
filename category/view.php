@@ -1,4 +1,5 @@
-<?php include( _i('inc/tpl/header.php') ); ?>
+<?php _app('view')->block('header') ?>
+
 <h4><?php echo $pageTitle; ?></h4>
 <div id="buttonZone">
     <button type="button" class="button mini green" id="btnNew"><?php echo _t('Add New Category'); ?></button>
@@ -55,7 +56,9 @@
         <?php form_token(); ?>
     </form>
 </div>
-<?php include( _i('inc/tpl/footer.php') ); ?>
+
+<?php _app('view')->block('footer') ?>
+
 <script>
     $(function() {
         $('#btnCancel').click(function() {
