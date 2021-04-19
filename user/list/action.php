@@ -2,8 +2,8 @@
 /**
  * DELETE user
  */
-if (sizeof($_POST)) {
-    $post = _post($_POST);
+if (_isHttpPost()) {
+    $post = _post();
     extract($post);
     if (isset($action) && $action == 'delete' && isset($hidDeleteId) && $hidDeleteId) {
         # DELETE

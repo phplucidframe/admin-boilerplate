@@ -1,8 +1,9 @@
 <?php
 $success = false;
 $error = false;
-if (sizeof($_POST)) {
-    $post = _post($_POST);
+
+if (_isHttpPost()) {
+    $post = _post();
     extract($post);
 
     # NEW/EDIT

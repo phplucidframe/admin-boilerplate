@@ -1,7 +1,8 @@
 <?php
 $success = false;
-if (sizeof($_POST)) {
-    $post = _post($_POST);
+
+if (_isHttpPost()) {
+    $post = _post();
     $post['txtBody'] = _xss($_POST['txtBody']);    # if it is populated by Rich Text Editor
     extract($post);
 

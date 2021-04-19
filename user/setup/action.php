@@ -1,7 +1,8 @@
 <?php
 $success = false;
-if (sizeof($_POST)) {
-    $post = _post($_POST);
+
+if (_isHttpPost()) {
+    $post = _post();
     extract($post);
 
     $validations = array(
