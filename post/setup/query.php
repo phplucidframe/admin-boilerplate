@@ -16,7 +16,7 @@ if ($id) {
 
 $condition = array('deleted' => null);
 if ($id) {
-    $condition['and'] = array(
+    $condition['$and'] = array(
         'id' => $post->cat_id,
         'deleted !=' => null
     );
