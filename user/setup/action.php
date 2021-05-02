@@ -63,7 +63,6 @@ if (_isHttpPost()) {
                 $success = true;
             }
         } else {
-            $auth = $_auth;
             $data = array(
                 'full_name' => $txtFullName,
                 'username'  => $txtUsername,

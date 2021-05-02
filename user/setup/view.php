@@ -7,7 +7,7 @@
             <input type="hidden" name="hidEditId" id="hidEditId" value="<?php echo $id; ?>" />
             <div class="message error"></div>
             <div class="fluid-45">
-                <table cellpadding="0" cellspacing="0" class="form fluid">
+                <table class="form fluid">
                     <tr>
                         <td class="label"><?php echo _t('Full Name') ?> <span class="required">*</span></td>
                         <td class="labelSeparator">:</td>
@@ -59,7 +59,7 @@
                         <td colspan="2">
                         <td class="entry">
                             <button type="submit" class="button green" id="btnSave" name="btnSave"><?php echo _t('Save'); ?></button>
-                            <button type="button" class="button" id="btnCancel" name="btnCancel"><?php echo _t('Cancel'); ?></button>
+                            <a href="<?php echo _url(_cfg('baseDir') . '/user') ?>" class="button"><?php echo _t('Cancel'); ?></a>
                         </td>
                     </tr>
                 </table>

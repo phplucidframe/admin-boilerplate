@@ -37,7 +37,7 @@ $lang = _urlLang($lang);
 
 if ($qb->getNumRows()) {
 ?>
-    <table cellpadding="0" cellspacing="0" border="0" class="list news">
+    <table class="list table news">
         <tr class="label">
             <td class="tableLeft" colspan="2"><?php echo _t('Actions'); ?></td>
             <td>
@@ -55,13 +55,13 @@ if ($qb->getNumRows()) {
             $row->catName   = $row->catName_i18n ?: $row->catName;
             ?>
             <tr>
-                <td class="tableLeft colAction">
-                    <a href="<?php echo _url(_cfg('baseDir') . '/post/setup', array($row->id, 'lang' => $lang)); ?>" class="edit" title="Edit" >
+                <td class="tableLeft actions colAction">
+                    <a href="<?php echo _url(_cfg('baseDir') . '/post/setup', array($row->id, 'lang' => $lang)); ?>" class="edit-ico" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
-                <td class="colAction">
-                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
+                <td class="actions colAction">
+                    <a href="#" class="delete delete-ico" title="Delete" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>

@@ -7,12 +7,12 @@ if ($id) {
         ->where()
         ->condition('id', $id)
         ->getSingleResult();
-    if ($post) {
-        $post = _getTranslationStrings($post, array('title', 'body'), $lang);
-    } else {
-        _redirect(_cfg('baseDir') . '/post/list');
+    if (!$post) {
+        _page404();
     }
 }
+
+$post = _getTranslationStrings($post, array('title', 'body'), $lang);
 
 $condition = array('deleted' => null);
 if ($id) {

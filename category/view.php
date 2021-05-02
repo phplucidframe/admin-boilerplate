@@ -1,23 +1,19 @@
 <?php _app('view')->block('header') ?>
 
 <h4><?php echo $pageTitle; ?></h4>
+
 <div id="buttonZone">
-    <button type="button" class="button mini green" id="btnNew"><?php echo _t('Add New Category'); ?></button>
+    <button type="button" class="button mini green" id="btn-new"><?php echo _t('Add New Category'); ?></button>
 </div>
+
 <div id="list"></div>
-<input type="hidden" id="hidDeleteId" value="" />
-<!-- Confirm Delete Dialog -->
-<div id="dialog-confirm" class="dialog" title="<?php echo _t('Confirm Category Delete'); ?>" style="display:none">
-    <div class="msg-body">
-        <p class="center"><?php echo _t('Are you sure you want to delete?'); ?></p>
-    </div>
-</div>
+
 <!-- Category Entry Form -->
-<div id="dialog-category" class="dialog" title="<?php echo _t('Category'); ?>" style="display:none">
-    <form method="post" id="frmCategory" action="<?php echo _url(_cfg('baseDir') . '/category/action.php'); ?>">
+<div id="dialog-category" class="dialog" title="<?php echo _t('Category'); ?>">
+    <form method="post" id="form-category">
         <div class="message error"></div>
-        <input type="hidden" id="hidEditId" name="hidEditId" />
-        <table cellpadding="0" cellspacing="0" class="form fluid">
+        <input type="hidden" id="id" name="id" />
+        <table class="form fluid">
             <tr>
                 <td class="label">
                     <?php echo _t('Name'); ?>
@@ -48,8 +44,12 @@
             <tr>
                 <td colspan="2">
                 <td class="entry">
-                    <button type="button" class="button jqbutton submit large green" id="btnSave" name="btnSave"><?php echo _t('Save'); ?></button>
-                    <button type="button" class="button jqbutton large" id="btnCancel" name="btnCancel"><?php echo _t('Cancel'); ?></button>
+                    <button type="submit" class="button jqbutton submit large green" id="btn-save" name="btnSave">
+                        <?php echo _t('Save') ?>
+                    </button>
+                    <button type="button" class="button jqbutton large" id="btn-cancel" name="btnCancel">
+                        <?php echo _t('Cancel') ?>
+                    </button>
                 </td>
             </tr>
         </table>
@@ -61,8 +61,6 @@
 
 <script>
     $(function() {
-        $('#btnCancel').click(function() {
-            $('#dialog-category').dialog('close');
-        });
+        LC.Page.Category.init();
     });
 </script>

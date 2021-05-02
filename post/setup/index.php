@@ -25,6 +25,3 @@ include('query.php');
     <?php include('view.php') ?>
 </body>
 </html>
-<script type="text/javascript">
-    LC.Page.Post.Setup.init();
-</script>

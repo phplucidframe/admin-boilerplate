@@ -1,46 +1,47 @@
 <?php
+
+$table = 'category';
 $success = false;
 
 if (_isHttpPost()) {
     $post = _post();
-    extract($post);
 
-    if (isset($action) && $action == 'delete' && isset($hidDeleteId) && $hidDeleteId) {
+    if (isset($post['action']) && $post['action'] == 'delete' && !empty($post['id'])) {
         # DELETE category
-        if (db_delete('category', array('id' => $hidDeleteId))) {
+        if (db_delete($table, array('id' => $post['id']))) {
             $success = true;
         }
     } else {
         # NEW/EDIT
         $validations = array(
             'txtName' => array(
-                'caption'   => _t('Name'). ' ('._langName($lc_defaultLang).')',
-                'value'     => $txtName,
-                'rules'     => array('mandatory'),
-                'parameters'=> array($hidEditId)
+                'caption'       => _t('Name') . ' (' . _langName(_defaultLang()) . ')',
+                'value'         => $post['txtName'],
+                'rules'         => array('mandatory'),
+                'parameters'    => array($post['id'])
             )
         );
 
         if (form_validate($validations)) {
-            if ($hidEditId) {
+            if ($post['id']) {
                 $data = array(
-                    'id' => $hidEditId,
-                    'name' => $txtName
+                    'id' => $post['id'],
+                    'name' => $post['txtName']
                 );
                 # Get translation strings for "catName"
                 $data = array_merge($data, _postTranslationStrings($post, array('name' => 'txtName')));
 
-                if (db_update('category', $data, false)) {
+                if (db_update($table, $data, false)) {
                     $success = true;
                 }
             } else {
                 $data = array(
-                    'name' => $txtName,
+                    'name' => $post['txtName'],
                 );
                 # Get translation strings for "pptName"
                 $data = array_merge($data, _postTranslationStrings($post, array('name' => 'txtName')));
 
-                if (db_insert('category', $data)) {
+                if (db_insert($table, $data)) {
                     $success = true;
                 }
             }
@@ -53,4 +54,5 @@ if (_isHttpPost()) {
         form_set('callback', 'LC.Page.Category.list()'); # Ajax callback
     }
 }
-form_respond('frmCategory'); # Ajax response
+
+form_respond('form-category'); # Ajax response

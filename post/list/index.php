@@ -13,7 +13,7 @@ $pageTitle = _t('Posts');
 </body>
 </html>
 <script type="text/javascript">
-$(function() {
-    LC.Page.Post.List.init('<?php echo _getLang();?>');
-});
+    $(function() {
+        LC.Page.Post.List.init('<?php echo _getLang() ?>');
+    });
 </script>

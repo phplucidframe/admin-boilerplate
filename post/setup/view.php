@@ -13,9 +13,11 @@ if ($id) {
         <div class="message error"></div>
         <div class="row">
             <label><?php echo _t('Title').' ('._langName($lang).')' ?> <span class="required">*</span></label>
-            <div><input type="text" name="txtTitle" id="txtTitle" value="<?php echo $post->title;?>" class="<?php echo $lang; ?> lc-form-input fluid-100" /></div>
+            <div>
+                <input type="text" name="txtTitle" id="txtTitle" value="<?php echo $post->title_i18n ?>" class="<?php echo $lang; ?> lc-form-input fluid-100" />
+            </div>
         </div>
-        <?php if (auth_isAdmin() && $lang == $lc_defaultLang) { ?>
+        <?php if (auth_isAdmin() && $lang == _defaultLang()) { ?>
         <div class="row">
             <label><?php echo _t('Slug'); ?> (<?php echo _t("Leave blank unless you want to customize this"); ?>)</label>
             <div><input type="text" name="txtSlug" id="txtSlug" class="lc-form-input fluid-100" value="<?php echo $post->slug;?>"></div>
@@ -43,14 +45,12 @@ if ($id) {
         <div class="row">
             <label><?php echo _t('Body').' ('._langName($lang).')' ?> <span class="required">*</span></label>
             <div>
-                <textarea id="txtBody" name="txtBody" rows="15" class="<?php echo $lang; ?> lc-form-input fluid-100"><?php echo $post->body; ?></textarea>
+                <textarea id="txtBody" name="txtBody" rows="15" class="<?php echo $lang; ?> lc-form-input fluid-100"><?php echo $post->body_i18n ?></textarea>
             </div>
         </div>
         <div class="row">
             <button type="submit" class="submit button green" id="btnSave" name="btnSave"><?php echo _t('Save'); ?></button>
-            <a href="<?php echo _url(_cfg('baseDir') . '/post/list'); ?>">
-                <button type="button" class="button" id="btnCancel" name="btnCancel"><?php echo _t('Cancel'); ?></button>
-            </a>
+            <a href="<?php echo _url(_cfg('baseDir') . '/post/list', array('lang' => $lang)); ?>" class="button"><?php echo _t('Cancel'); ?></a>
         </div>
         <?php form_token(); ?>
     </form>

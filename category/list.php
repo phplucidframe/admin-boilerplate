@@ -5,7 +5,7 @@ list($qb, $pager, $total) = db_findWithPager('category', array('deleted' => null
 if ($qb->getNumRows()) {
     $langs = _langs(_defaultLang());
     ?>
-    <table cellpadding="0" cellspacing="0" border="0" class="list">
+    <table class="list table">
         <tr class="label">
             <td class="tableLeft" colspan="2"><?php echo _t('Actions'); ?></td>
             <td>
@@ -29,13 +29,13 @@ if ($qb->getNumRows()) {
             $data[$row->id] = (array) _getTranslationStrings($row, 'name');
             ?>
             <tr>
-                <td class="tableLeft colAction">
-                    <a href="#" class="edit" title="Edit" rel="<?php echo $row->id; ?>">
+                <td class="tableLeft actions colAction">
+                    <a href="#" class="edit edit-ico" title="Edit" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
                 <td class="colAction">
-                    <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
+                    <a href="#" class="delete delete-ico" title="Delete" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>
@@ -58,7 +58,7 @@ if ($qb->getNumRows()) {
         ?>
     </table>
     <div class="pager-container"><?php echo $pager->display(); ?></div>
-    <?php _addFormData('frmCategory', $data); ?>
+    <?php _addFormData('form-category', $data); ?>
 <?php
 } else {
 ?>

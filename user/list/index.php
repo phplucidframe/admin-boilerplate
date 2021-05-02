@@ -12,7 +12,7 @@ $pageTitle = _t('Users');
 </body>
 </html>
 <script type="text/javascript">
-$(function() {
-    LC.Page.User.List.init();
-});
+    $(function() {
+        LC.Page.User.List.init();
+    });
 </script>

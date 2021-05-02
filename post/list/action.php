@@ -4,9 +4,9 @@
  */
 if (_isHttpPost()) {
     $post = _post();
-    extract($post);
-    if (isset($action) && $action == 'delete' && isset($hidDeleteId) && $hidDeleteId) {
+
+    if (isset($post['action']) && $post['action'] == 'delete' && !empty($post['id'])) {
         # DELETE
-        db_delete('post', array('id' => $hidDeleteId));
+        db_delete('post', array('id' => $post['id']));
     }
 }

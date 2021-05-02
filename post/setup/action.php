@@ -29,12 +29,12 @@ if (_isHttpPost()) {
             # edit
             $data = array(
                 'id'                => $hidEditId,
-                'title_'.$hidLang   => $txtTitle,
-                'body_'.$hidLang    => $txtBody,
+                'title_' . $hidLang => $txtTitle,
+                'body_' . $hidLang  => $txtBody,
                 'cat_id'            => $cboCategory,
             );
 
-            if ($hidLang == $lc_defaultLang) {
+            if ($hidLang == _defaultLang()) {
                 # default language
                 $useSlug = true;
                 $data['title']  = $txtTitle;
@@ -60,7 +60,7 @@ if (_isHttpPost()) {
                 'title_'. $hidLang  => $txtTitle,
                 'body_'. $hidLang   => $txtBody,
                 'cat_id'            => $cboCategory,
-                'user_id'           => $_auth->id
+                'user_id'           => _app('auth')->id,
             );
 
             if (isset($txtSlug) && $txtSlug) {
@@ -74,7 +74,7 @@ if (_isHttpPost()) {
         }
         if ($success) {
             form_set('success', true);
-            form_set('redirect', _url(_cfg('baseDir') . '/post/list'));
+            form_set('redirect', _url(_cfg('baseDir') . '/post/list', array('lang' => $hidLang)));
         }
     } else {
         form_set('error', validation_get('errors'));

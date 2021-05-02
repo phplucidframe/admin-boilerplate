@@ -4,7 +4,7 @@ list($qb, $pager, $total) = db_findWithPager('user', array('deleted' => null), a
 
 if ($qb->getNumRows()) {
 ?>
-    <table cellpadding="0" cellspacing="0" border="0" class="list users">
+    <table class="list table users">
         <tr class="label">
             <td class="tableLeft" colspan="2"><?php echo _t('Actions'); ?></td>
             <td><?php echo _t('Full Name') ?></td>
@@ -14,16 +14,16 @@ if ($qb->getNumRows()) {
         </tr>
         <?php while ($row = $qb->fetchRow()): ?>
             <tr>
-                <td class="tableLeft colAction">
-                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->id)); ?>" class="edit" title="Edit" >
+                <td class="tableLeft actions colAction">
+                    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->id)); ?>" class="edit edit-ico" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
-                <td class="colAction">
+                <td class="actions colAction">
                     <?php if ($row->is_master): ?>
-                        <span class="delete disabled"></span>
+                        <span class="delete delete-ico disabled"></span>
                     <?php else: ?>
-                        <a href="#" class="delete" title="Delete" rel="<?php echo $row->id; ?>">
+                        <a href="#" class="delete delete-ico" title="Delete" rel="<?php echo $row->id; ?>">
                             <span><?php echo _t('Delete'); ?></span>
                         </a>
                     <?php endif ?>
