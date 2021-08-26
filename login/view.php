@@ -1,7 +1,8 @@
-<div class="container-box">
-    <form method="post" id="frmLogin">
+<form method="post" id="frmLogin">
     <div class="box">
-        <div class="logo"><img src="<?php echo _img('logo.png'); ?>" /></div>
+        <div class="logo">
+            <img src="<?php echo _img('logo.png'); ?>" alt="<?php echo _cfg('siteName') ?>" />
+        </div>
         <div class="form">
             <?php
             if ($msg = flash_get()) {
@@ -32,5 +33,4 @@
         </div>
     </div>
     <?php form_token(); ?>
-    </form>
-</div>
+</form>

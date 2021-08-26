@@ -1,5 +1,5 @@
 <?php
-$get  = _get($_GET);
+$get  = _get();
 $lang = _getLang();
 
 # Count query for the pager
@@ -8,12 +8,7 @@ $rowCount = db_count('post')
     ->fetch();
 
 # Prerequisite for the Pager
-$pager = _pager()
-    ->set('itemsPerPage', _cfg('itemsPerPage'))
-    ->set('pageNumLimit', _cfg('pageNumLimit'))
-    ->set('total', $rowCount)
-    ->set('ajax', true)
-    ->calculate();
+$pager = pager_ajax($rowCount);
 
 $qb = db_select('post', 'p')
     ->join('category', 'c', 'p.cat_id = c.id')

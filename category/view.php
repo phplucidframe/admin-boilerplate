@@ -1,5 +1,3 @@
-<?php _app('view')->block('header') ?>
-
 <h4><?php echo $pageTitle; ?></h4>
 
 <div id="buttonZone">
@@ -57,10 +55,9 @@
     </form>
 </div>
 
-<?php _app('view')->block('footer') ?>
-
 <script>
     $(function() {
         LC.Page.Category.init();
     });
 </script>
+

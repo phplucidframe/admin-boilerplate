@@ -1,5 +1,3 @@
-<?php _app('view')->block('header') ?>
-
 <div class="block full-width">
     <h3><?php echo _t($pageTitle); ?></h3>
     <div class="content-box">
@@ -70,4 +68,8 @@
     <div id="block-foot"></div>
 </div>
 
-<?php _app('view')->block('footer') ?>
+<script type="text/javascript">
+    $(function() {
+        LC.Page.User.Setup.init();
+    });
+</script>

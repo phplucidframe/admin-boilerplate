@@ -12,5 +12,3 @@ $lc_translationEnabled = false;
 $lc_cleanURL = true;
 # $lc_itemsPerPage: number of items per page in pager
 $lc_itemsPerPage = 20;
-# $lc_layoutMode: Enable layout mode or not
-$lc_layoutMode = false;

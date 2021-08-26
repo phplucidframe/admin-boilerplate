@@ -1,5 +1,3 @@
-<?php _app('view')->block('header') ?>
-
 <h4><?php echo $pageTitle; ?></h4>
 <?php
 if ($id) {
@@ -55,5 +53,3 @@ if ($id) {
         <?php form_token(); ?>
     </form>
 </div>
-
-<?php _app('view')->block('footer') ?>

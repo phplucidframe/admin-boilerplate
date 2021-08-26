@@ -1,27 +1,27 @@
 <?php
+
+$view = _app('view');
 $id = _arg(3);
 
 if ($id) {
-    $pageTitle = 'Edit User';
+    $pageTitle = _t('Edit User');
 } else {
     $id = 0;
-    $pageTitle = 'Add New User';
+    $pageTitle = _t('Add New User');
 }
 
-include('query.php');
-?>
-<!DOCTYPE html>
-<html lang="<?php echo _lang(); ?>">
-<head>
-    <title><?php echo _title($pageTitle); ?></title>
-    <?php _app('view')->block('head') ?>
-</head>
-<body>
-    <?php include('view.php') ?>
-</body>
-</html>
-<script type="text/javascript">
-$(function() {
-    LC.Page.User.Setup.init();
-});
-</script>
+$user = _entity('user');
+
+if ($id) {
+    $user = db_select('user')
+        ->where()->condition('id', $id)
+        ->getSingleResult();
+}
+
+_app('title', $pageTitle);
+
+$view->data = array(
+    'pageTitle' => $pageTitle,
+    'id' => $id,
+    'user' => $user
+);

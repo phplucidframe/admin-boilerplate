@@ -1,5 +1,3 @@
-<?php _app('view')->block('header') ?>
-
 <h4><?php echo _t($pageTitle); ?></h4>
 
 <div id="buttonZone">
@@ -15,4 +13,8 @@
     </div>
 </div>
 
-<?php _app('view')->block('footer') ?>
+<script type="text/javascript">
+    $(function() {
+        LC.Page.User.List.init();
+    });
+</script>

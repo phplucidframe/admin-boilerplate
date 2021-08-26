@@ -1,5 +1,3 @@
-<?php _app('view')->block('header') ?>
-
 <h4><?php echo $pageTitle; ?></h4>
 
 <?php _app('view')->block('language-selection'); ?>
@@ -10,4 +8,8 @@
 
 <div id="list"></div>
 
-<?php _app('view')->block('footer') ?>
+<script type="text/javascript">
+    $(function() {
+        LC.Page.Post.List.init('<?php echo _getLang() ?>');
+    });
+</script>
