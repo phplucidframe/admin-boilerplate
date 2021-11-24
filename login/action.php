@@ -15,7 +15,7 @@ if (_isHttpPost()) {
         'pwd' => array(
             'caption'   => _t('Password'),
             'value'     => $post['pwd'],
-            //'rules'     => array('mandatory') // for demo
+            'rules'     => array('mandatory')
         )
     );
 
@@ -27,8 +27,7 @@ if (_isHttpPost()) {
             ->condition('LOWER(username)', strtolower($post['username']))
             ->getSingleResult();
         if ($user) {
-            if (($user->username === 'admin' && $user->is_master) || /* this condition is just for demo */
-                ($user->password && _decrypt($user->password) == $post['pwd'])) {
+            if ($post['pwd'] == _decrypt($user->password)) {
                 $success = true;
                 unset($user->password);
                 # Create the Authentication object

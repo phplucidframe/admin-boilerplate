@@ -13,12 +13,12 @@
             } ?>
             <div class="row">
                 <div class="entry">
-                    <input type="text" name="username" id="username" class="lc-form-input large full-width" placeholder="<?php echo _t('Username'); ?>" autofocus />
+                    <input type="text" name="username" id="username" class="lc-form-input large full-width" placeholder="<?php echo _t('Username'); ?>" autofocus required />
                 </div>
             </div>
             <div class="row">
                 <div class="entry pwd">
-                    <input type="password" name="pwd" id="pwd" class="lc-form-input large full-width" placeholder="<?php echo _t('Password'); ?>" />
+                    <input type="password" name="pwd" id="pwd" class="lc-form-input large full-width" placeholder="<?php echo _t('Password'); ?>" required />
                     <a href="#" title="<?php echo _t('Forgot password?'); ?>">?</a>
                 </div>
             </div>
