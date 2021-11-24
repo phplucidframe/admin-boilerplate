@@ -4,19 +4,18 @@ $error = false;
 
 if (_isHttpPost()) {
     $post = _post();
-    extract($post);
 
     # NEW/EDIT
     $validations = array(
-        'txtUsername' => array(
+        'username' => array(
             'caption'   => _t('Username'),
-            'value'     => $txtUsername,
+            'value'     => $post['username'],
             'rules'     => array('mandatory')
         ),
-        'txtPwd' => array(
+        'pwd' => array(
             'caption'   => _t('Password'),
-            'value'     => $txtPwd,
-            //'rules'     => array('mandatory')
+            'value'     => $post['pwd'],
+            //'rules'     => array('mandatory') // for demo
         )
     );
 
@@ -25,11 +24,11 @@ if (_isHttpPost()) {
 
         $user = db_select('user', 'u')
             ->where()
-            ->condition('LOWER(username)', strtolower($txtUsername))
+            ->condition('LOWER(username)', strtolower($post['username']))
             ->getSingleResult();
         if ($user) {
             if (($user->username === 'admin' && $user->is_master) || /* this condition is just for demo */
-                ($user->password && _decrypt($user->password) == $txtPwd)) {
+                ($user->password && _decrypt($user->password) == $post['pwd'])) {
                 $success = true;
                 unset($user->password);
                 # Create the Authentication object

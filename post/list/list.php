@@ -30,11 +30,10 @@ $qb = db_select('post', 'p')
 
 $lang = _urlLang($lang);
 
-if ($qb->getNumRows()) {
-?>
+if ($qb->getNumRows()): ?>
     <table class="list table news">
         <tr class="label">
-            <td class="tableLeft" colspan="2"><?php echo _t('Actions'); ?></td>
+            <td class="table-left" colspan="2"><?php echo _t('Actions'); ?></td>
             <td>
                 <span><?php echo _t('Title'); ?></span>
                 <label class="lang">(<?php echo _langName($lang); ?>)</label>
@@ -43,37 +42,32 @@ if ($qb->getNumRows()) {
             <td><?php echo _t('Category'); ?></td>
             <td><?php echo _t('Date') ?></td>
         </tr>
-        <?php
-        while ($row = $qb->fetchRow()) {
+        <?php while ($row = $qb->fetchRow()): ?>
+            <?php
             $row->title     = $row->title_i18n ?: $row->title;
             $row->body      = $row->body_i18n ?: $row->body;
             $row->catName   = $row->catName_i18n ?: $row->catName;
             ?>
             <tr>
-                <td class="tableLeft actions colAction">
+                <td class="table-left actions col-action">
                     <a href="<?php echo _url(_cfg('baseDir') . '/post/setup', array($row->id, 'lang' => $lang)); ?>" class="edit-ico" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
-                <td class="actions colAction">
+                <td class="actions col-action">
                     <a href="#" class="delete delete-ico" title="Delete" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
                 </td>
                 <td class="colTitle <?php echo $lang; ?>"><?php echo $row->title;?></td>
-                <td class=""><?php echo $row->full_name; ?></td>
+                <td><?php echo $row->full_name; ?></td>
                 <td class="<?php echo $lang; ?>"><?php echo $row->catName; ?></td>
-                <td class=""><?php echo _fdateTime($row->created); ?></td>
+                <td><?php echo _fdateTime($row->created); ?></td>
             </tr>
-            <?php
-        }
-?>
+        <?php endwhile; ?>
     </table>
-    <div class="pager-container"><?php echo $pager->display(); ?></div>
-<?php
-} else {
-?>
+    <div class="pager-container"><?php $pager->display(); ?></div>
+<?php else: ?>
     <div class="no-record"><?php echo _t("You don't have any post! %sLet's go make a new post!%s", '<a href="'._url(_cfg('baseDir') . '/post/setup').'">', '</a>'); ?></div>
-<?php
-}
+<?php endif;
 

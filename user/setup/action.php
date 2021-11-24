@@ -3,42 +3,41 @@ $success = false;
 
 if (_isHttpPost()) {
     $post = _post();
-    extract($post);
 
     $validations = array(
         'txtFullName' => array(
             'caption'   => _t('Full Name'),
-            'value'     => $txtFullName,
+            'value'     => $post['full_name'],
             'rules'     => array('mandatory'),
         ),
         'txtUsername' => array(
             'caption'   => _t('Username'),
-            'value'     => $txtUsername,
+            'value'     => $post['username'],
             'rules'     => array('mandatory', 'username', 'unique'),
             'table'     => 'user',
             'field'     => 'username',
-            'id'        => $hidEditId,
+            'id'        => $post['id'],
         ),
         'txtEmail' => array(
             'caption'   => _t('Email'),
-            'value'     => $txtEmail,
+            'value'     => $post['email'],
             'rules'     => array('mandatory', 'email'),
         )
     );
 
-    if (!$hidEditId) {
+    if (!$post['id']) {
         $validations['txtPwd'] = array(
             'caption'   => _t('Password'),
-            'value'     => $txtPwd,
+            'value'     => $post['pwd'],
             'rules'     => array('mandatory', 'minLength', 'maxLength'),
             'min'       => 8,
             'max'       => 20,
         );
         $validations['txtConfirmPwd'] = array(
             'caption'   => _t('Confirm Password'),
-            'value'     => $txtConfirmPwd,
+            'value'     => $post['confirm_pwd'],
             'rules'     => array('mandatory', 'validate_confirmPassword'),
-            'parameters'=> array($txtPwd),
+            'parameters'=> array($post['pwd']),
             'messages'  => array(
                 'validate_confirmPassword' => _t('"%s" does not match.')
             )
@@ -46,17 +45,17 @@ if (_isHttpPost()) {
     }
 
     if (form_validate($validations)) {
-        if ($hidEditId) {
+        if ($post['id']) {
             $data = array(
-                'id'        => $hidEditId,
-                'full_name' => $txtFullName,
-                'username'  => $txtUsername,
-                'email'     => $txtEmail,
-                'role'      => $cboRole,
+                'id'        => $post['id'],
+                'full_name' => $post['full_name'],
+                'username'  => $post['username'],
+                'email'     => $post['email'],
+                'role'      => $post['role'],
             );
 
-            if (!empty($txtPwd)) {
-                $data['password'] = $txtPwd;
+            if (!empty($post['pwd'])) {
+                $data['password'] = $post['pwd'];
             }
 
             if (db_update('user', $data)) {
@@ -64,11 +63,11 @@ if (_isHttpPost()) {
             }
         } else {
             $data = array(
-                'full_name' => $txtFullName,
-                'username'  => $txtUsername,
-                'email'     => $txtEmail,
-                'password'  => _encrypt($txtPwd),
-                'role'      => $cboRole,
+                'full_name' => $post['full_name'],
+                'username'  => $post['username'],
+                'email'     => $post['email'],
+                'password'  => _encrypt($post['pwd']),
+                'role'      => $post['role'],
             );
 
             if (db_insert('user', $data)) {
@@ -85,4 +84,4 @@ if (_isHttpPost()) {
     }
 }
 
-form_respond('frmUser');
+form_respond('form-user');

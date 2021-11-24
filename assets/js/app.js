@@ -29,12 +29,12 @@ LC.Page.Category = {
     },
     /* Callback to set values when the dialog is open to edit an existing entry */
     edit : function($form, $data) {
-        $form.find('input[name=txtName]').val($data.name);
+        $form.find('input[name="name"]').val($data.name);
         // load data for the other translation text boxes
         if (typeof $data.name_i18n !== 'undefined') {
             for (var c in $data.name_i18n) {
                 if ($data.name_i18n.hasOwnProperty(c)) {
-                    $form.find('input[name=txtName_' + c + ']').val($data.name_i18n[c]);
+                    $form.find('input[name="name_' + c + '"]').val($data.name_i18n[c]);
                 }
             }
         }

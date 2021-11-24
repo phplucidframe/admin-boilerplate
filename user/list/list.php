@@ -6,7 +6,7 @@ if ($qb->getNumRows()) {
 ?>
     <table class="list table users">
         <tr class="label">
-            <td class="tableLeft" colspan="2"><?php echo _t('Actions'); ?></td>
+            <td class="table-left" colspan="2"><?php echo _t('Actions'); ?></td>
             <td><?php echo _t('Full Name') ?></td>
             <td><?php echo _t('Username') ?></td>
             <td><?php echo _t('Email') ?></td>
@@ -14,12 +14,12 @@ if ($qb->getNumRows()) {
         </tr>
         <?php while ($row = $qb->fetchRow()): ?>
             <tr>
-                <td class="tableLeft actions colAction">
+                <td class="table-left actions col-action">
                     <a href="<?php echo _url(_cfg('baseDir') . '/user/setup',array($row->id)); ?>" class="edit edit-ico" title="Edit" >
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
-                <td class="actions colAction">
+                <td class="actions col-action">
                     <?php if ($row->is_master): ?>
                         <span class="delete delete-ico disabled"></span>
                     <?php else: ?>
@@ -41,7 +41,7 @@ if ($qb->getNumRows()) {
             </tr>
         <?php endwhile; ?>
     </table>
-    <div class="pager-container"><?php echo $pager->display(); ?></div>
+    <div class="pager-container"><?php $pager->display(); ?></div>
 <?php
 } else {
 ?>

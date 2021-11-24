@@ -14,36 +14,24 @@ if (_isHttpPost()) {
     } else {
         # NEW/EDIT
         $validations = array(
-            'txtName' => array(
+            'name' => array(
                 'caption'       => _t('Name') . ' (' . _langName(_defaultLang()) . ')',
-                'value'         => $post['txtName'],
+                'value'         => $post['name'],
                 'rules'         => array('mandatory'),
                 'parameters'    => array($post['id'])
             )
         );
 
         if (form_validate($validations)) {
-            if ($post['id']) {
-                $data = array(
-                    'id' => $post['id'],
-                    'name' => $post['txtName']
-                );
-                # Get translation strings for "catName"
-                $data = array_merge($data, _postTranslationStrings($post, array('name' => 'txtName')));
+            $data = array(
+                'name' => $post['name']
+            );
 
-                if (db_update($table, $data, false)) {
-                    $success = true;
-                }
-            } else {
-                $data = array(
-                    'name' => $post['txtName'],
-                );
-                # Get translation strings for "pptName"
-                $data = array_merge($data, _postTranslationStrings($post, array('name' => 'txtName')));
+            # Get translation strings for "catName"
+            $data = array_merge($data, _postTranslationStrings($post, array('name' => 'name')));
 
-                if (db_insert($table, $data)) {
-                    $success = true;
-                }
+            if (db_save($table, $data, $post['id'])) {
+                $success = true;
             }
         } else {
             form_set('error', validation_get('errors'));

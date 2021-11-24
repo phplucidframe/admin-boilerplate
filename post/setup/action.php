@@ -3,49 +3,48 @@ $success = false;
 
 if (_isHttpPost()) {
     $post = _post();
-    $post['txtBody'] = _xss($_POST['txtBody']);    # if it is populated by Rich Text Editor
-    extract($post);
+    $post['body'] = _xss($_POST['body']);    # if it is populated by Rich Text Editor
 
-    $validations['txtTitle'] = array(
+    $validations['title'] = array(
         'caption'   => _t('Title'),
-        'value'     => $txtTitle,
+        'value'     => $post['title'],
         'rules'     => array('mandatory'),
     );
 
     $validations['cboCategory'] = array(
         'caption'   => _t('Category'),
-        'value'     => $cboCategory,
+        'value'     => $post['category'],
         'rules'     => array('mandatory'),
     );
 
-    $validations['txtBody'] = array(
+    $validations['body'] = array(
         'caption'   => _t('Body'),
-        'value'     => $txtBody,
+        'value'     => $post['body'],
         'rules'     => array('mandatory')
     );
 
     if (form_validate($validations)) {
-        if ($hidEditId) {
+        if ($post['id']) {
             # edit
             $data = array(
-                'id'                => $hidEditId,
-                'title_' . $hidLang => $txtTitle,
-                'body_' . $hidLang  => $txtBody,
-                'cat_id'            => $cboCategory,
+                'id'                        => $post['id'],
+                'title_' . $post['lang']    => $post['title'],
+                'body_' . $post['lang']     => $post['body'],
+                'cat_id'                    => $post['category'],
             );
 
-            if ($hidLang == _defaultLang()) {
+            if ($post['lang'] == _defaultLang()) {
                 # default language
                 $useSlug = true;
-                $data['title']  = $txtTitle;
-                $data['body']   = $txtBody;
+                $data['title']  = $post['title'];
+                $data['body']   = $post['body'];
             } else {
                 $useSlug = false;
             }
 
-            if (isset($txtSlug) && $txtSlug) {
+            if (isset($post['slug']) && $post['slug']) {
                 # if user entered slug manually
-                $postSlug = _slug($txtSlug, 'post', array('id !=' => $hidEditId));
+                $postSlug = _slug($post['slug'], 'post', array('id !=' => $post['id']));
                 $data['slug'] = $postSlug;
             }
 
@@ -55,17 +54,17 @@ if (_isHttpPost()) {
         } else {
             # new
             $data = array(
-                'title'             => $txtTitle,
-                'body'              => $txtBody,
-                'title_'. $hidLang  => $txtTitle,
-                'body_'. $hidLang   => $txtBody,
-                'cat_id'            => $cboCategory,
-                'user_id'           => _app('auth')->id,
+                'title'                 => $post['title'],
+                'body'                  => $post['body'],
+                'title_'. $post['lang'] => $post['title'],
+                'body_'. $post['lang']  => $post['body'],
+                'cat_id'                => $post['category'],
+                'user_id'               => _app('auth')->id,
             );
 
-            if (isset($txtSlug) && $txtSlug) {
+            if (isset($post['slug']) && $post['slug']) {
                 # if user entered slug manually
-                $postSlug = _slug($txtSlug, 'post');
+                $postSlug = _slug($post['slug'], 'post');
                 $data['slug'] = $postSlug;
             }
             if (db_insert('post', $data)) {
@@ -74,11 +73,11 @@ if (_isHttpPost()) {
         }
         if ($success) {
             form_set('success', true);
-            form_set('redirect', _url(_cfg('baseDir') . '/post/list', array('lang' => $hidLang)));
+            form_set('redirect', _url(_cfg('baseDir') . '/post/list', array('lang' => $post['lang'])));
         }
     } else {
         form_set('error', validation_get('errors'));
     }
 }
 # Ajax response
-form_respond('frmPost');
+form_respond('form-post');

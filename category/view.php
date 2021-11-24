@@ -18,9 +18,9 @@
                     <label class="lang">(<?php echo _langName(); ?>)</label>
                     <span class="required">*</span>
                 </td>
-                <td class="labelSeparator">:</td>
+                <td class="label-separator">:</td>
                 <td class="entry">
-                    <input type="text" name="txtName" id="txtName" class="lc-form-input fluid-100" />
+                    <input type="text" name="name" id="name" class="lc-form-input fluid-100" />
                 </td>
             </tr>
             <?php $langs = _langs(_defaultLang()); ?>
@@ -33,19 +33,19 @@
                     <?php } ?>
                 </td>
                 <?php $lcode = _queryLang($lcode); ?>
-                <td class="labelSeparator">:</td>
+                <td class="label-separator">:</td>
                 <td class="entry">
-                    <input type="text" name="txtName_<?php echo $lcode; ?>" id="txtName_<?php echo $lcode; ?>" class="lc-form-input fluid-100" />
+                    <input type="text" name="name_<?php echo $lcode; ?>" id="name-<?php echo $lcode; ?>" class="lc-form-input fluid-100" />
                 </td>
             </tr>
             <?php } ?>
             <tr>
                 <td colspan="2">
                 <td class="entry">
-                    <button type="submit" class="button jqbutton submit large green" id="btn-save" name="btnSave">
+                    <button type="submit" class="button jqbutton submit large green" id="btn-save" name="btn-save">
                         <?php echo _t('Save') ?>
                     </button>
-                    <button type="button" class="button jqbutton large" id="btn-cancel" name="btnCancel">
+                    <button type="button" class="button jqbutton large" id="btn-cancel" name="btn-cancel">
                         <?php echo _t('Cancel') ?>
                     </button>
                 </td>
