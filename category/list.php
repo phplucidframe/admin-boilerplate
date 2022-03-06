@@ -1,6 +1,6 @@
 <?php
 
-list($qb, $pager, $total) = db_findWithPager('category', array('deleted' => null), array('name' => 'asc'));
+list($qb, $pager, $total) = db_findWithPager('category', array(), array('name' => 'asc'));
 
 if ($qb->getNumRows()): ?>
     <?php $langs = _langs(_defaultLang()) ?>

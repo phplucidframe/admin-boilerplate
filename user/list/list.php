@@ -1,6 +1,6 @@
 <?php
 
-list($qb, $pager, $total) = db_findWithPager('user', array('deleted' => null), array('role' => 'asc', 'full_name' => 'asc'));
+list($qb, $pager, $total) = db_findWithPager('user', array(), array('role' => 'asc', 'full_name' => 'asc'));
 
 if ($qb->getNumRows()) {
 ?>
