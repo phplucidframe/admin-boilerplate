@@ -38,9 +38,6 @@ if (_isHttpPost()) {
             'value'     => $post['confirm_pwd'],
             'rules'     => array('mandatory', 'validate_confirmPassword'),
             'parameters'=> array($post['pwd']),
-            'messages'  => array(
-                'validate_confirmPassword' => _t('"%s" does not match.')
-            )
         );
     }
 
