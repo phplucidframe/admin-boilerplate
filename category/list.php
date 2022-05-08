@@ -33,7 +33,7 @@ if ($qb->getNumRows()): ?>
                         <span><?php echo _t('Edit'); ?></span>
                     </a>
                 </td>
-                <td class="col-action">
+                <td class="actions col-action">
                     <a href="#" class="delete delete-ico" title="Delete" rel="<?php echo $row->id; ?>">
                         <span><?php echo _t('Delete'); ?></span>
                     </a>
