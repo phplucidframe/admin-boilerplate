@@ -56,7 +56,7 @@
                     <tr>
                         <td colspan="2">
                         <td class="entry">
-                            <button type="submit" class="button green" id="btn-save" name="btn-save"><?php echo _t('Save'); ?></button>
+                            <button type="submit" class="button blue" id="btn-save" name="btn-save"><?php echo _t('Save'); ?></button>
                             <a href="<?php echo _url(_cfg('baseDir') . '/user') ?>" class="button"><?php echo _t('Cancel'); ?></a>
                         </td>
                     </tr>

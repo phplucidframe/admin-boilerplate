@@ -3,6 +3,7 @@
 <head>
     <title><?php echo _title(); ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="<?php echo _img('favicon.ico'); ?>" type="image/x-icon" />
     <?php _css('base.css'); ?>
     <?php _css('base.' . _lang() . 'css'); ?>

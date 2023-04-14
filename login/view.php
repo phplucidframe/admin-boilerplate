@@ -1,7 +1,7 @@
 <form method="post" id="frmLogin">
     <div class="box">
         <div class="logo">
-            <img src="<?php echo _img('logo.png'); ?>" alt="<?php echo _cfg('siteName') ?>" />
+            <img src="<?php echo _img('logo-blue.png'); ?>" alt="<?php echo _cfg('siteName') ?>" class="fluid" />
         </div>
         <div class="form">
             <?php
@@ -24,7 +24,7 @@
             </div>
             <div class="row">
                 <div class="entry">
-                    <button type="submit" class="button green large full-width" name="btn-login"><?php echo _t('Sign In'); ?></button>
+                    <button type="submit" class="button blue large full-width" name="btn-login"><?php echo _t('Sign In'); ?></button>
                 </div>
             </div>
             <div class="row center">

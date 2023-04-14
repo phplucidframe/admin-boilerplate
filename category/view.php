@@ -1,7 +1,7 @@
 <h4><?php echo $pageTitle; ?></h4>
 
 <div id="buttonZone">
-    <button type="button" class="button mini green" id="btn-new"><?php echo _t('Add New Category'); ?></button>
+    <button type="button" class="button mini blue" id="btn-new"><?php echo _t('Add New Category'); ?></button>
 </div>
 
 <div id="list"></div>
@@ -42,7 +42,7 @@
             <tr>
                 <td colspan="2">
                 <td class="entry">
-                    <button type="submit" class="button jqbutton submit large green" id="btn-save" name="btn-save">
+                    <button type="submit" class="button jqbutton submit large blue" id="btn-save" name="btn-save">
                         <?php echo _t('Save') ?>
                     </button>
                     <button type="button" class="button jqbutton large" id="btn-cancel" name="btn-cancel">

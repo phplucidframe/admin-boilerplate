@@ -3,6 +3,7 @@
 <head>
     <title><?php echo _title(); ?></title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" href="<?php echo _img('favicon.ico'); ?>" type="image/x-icon" />
     <?php _css('base.css'); ?>
     <?php _css('base.' . _lang() . 'css'); ?>
@@ -21,7 +22,7 @@
     <div id="wrapper">
         <div id="page-container">
             <div id="top-bar" class="clearfix">
-                <a href="<?php echo _url('home'); ?>"><?php echo _t('Visit Site'); ?></a>
+                <a href="<?php echo _url('home'); ?>" class="logo-sm" target="_blank"><?php echo _t('Visit Site'); ?></a>
                 <div class="greeting mobile">Hello, <?php echo _app('auth')->full_name; ?></div>
                 <ul id="user-menu" class="clearfix">
                     <li class="greeting">Hello, <?php echo _app('auth')->full_name; ?></li>
@@ -39,7 +40,7 @@
             <div id="header">
                 <div class="container clearfix">
                     <a href="<?php echo _url('home'); ?>" id="logo">
-                        <img src="<?php echo _img('logo.png'); ?>" class="fluid" alt="<?php echo _cfg('siteName'); ?>" />
+                        <img src="<?php echo _img('logo-blue.png'); ?>" class="fluid" alt="<?php echo _cfg('siteName'); ?>" />
                     </a>
                     <ul id="menu" class="clearfix">
                         <li>
@@ -63,14 +64,13 @@
             </div> <!-- #page -->
             <div id="footer">
                 <div class="container">
-                    <div id="copyright">
+                    <div id="copyright" class="clearfix">
                         <span id="left">&copy; <?php echo date('Y'); ?></span>
                         <span id="right"><?php echo _cfg('siteName'); ?></span>
                     </div>
                     <ul class="social-icons">
                         <li><a href="https://fb.com/lucidframe.myanmar" class="fb" target="_blank">Facebook</a></li>
                         <li><a href="https://twitter.com/phplucidframe" class="tw" target="_blank">Twitter</a></li>
-                        <li><a href="http://goo.gl/PCfSvO" class="gplus" target="_blank">Google+</a></li>
                     </ul>
                 </div>
             </div>

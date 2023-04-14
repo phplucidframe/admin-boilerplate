@@ -1,7 +1,7 @@
 <h4><?php echo _t($pageTitle); ?></h4>
 
 <div id="buttonZone">
-    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup') ?>" class="button mini green"><?php echo _t('Add New User'); ?></a>
+    <a href="<?php echo _url(_cfg('baseDir') . '/user/setup') ?>" class="button mini blue"><?php echo _t('Add New User'); ?></a>
 </div>
 
 <div id="list"></div>

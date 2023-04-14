@@ -45,7 +45,7 @@ if ($id) {
             </div>
         </div>
         <div class="row">
-            <button type="submit" class="submit button green" id="btn-save" name="btn-save"><?php echo _t('Save'); ?></button>
+            <button type="submit" class="submit button blue" id="btn-save" name="btn-save"><?php echo _t('Save'); ?></button>
             <a href="<?php echo _url(_cfg('baseDir') . '/post/list', array('lang' => $lang)); ?>" class="button"><?php echo _t('Cancel'); ?></a>
         </div>
         <?php form_token(); ?>
