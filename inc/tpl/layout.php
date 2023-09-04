@@ -30,9 +30,6 @@
                         <a href="<?php echo _url(_cfg('baseDir') . '/user/setup/', array(_app('auth')->id)); ?>"><?php echo _t('Edit My Account'); ?></a>
                     </li>
                     <li>
-                        <a href="#"><?php echo _t('Change Password'); ?></a>
-                    </li>
-                    <li>
                         <a href="<?php echo _url(_cfg('baseDir') . '/logout', array(_app('auth')->token)); ?>"><?php echo _t('Logout'); ?></a>
                     </li>
                 </ul>
@@ -70,7 +67,6 @@
                     </div>
                     <ul class="social-icons">
                         <li><a href="https://fb.com/lucidframe.myanmar" class="fb" target="_blank">Facebook</a></li>
-                        <li><a href="https://twitter.com/phplucidframe" class="tw" target="_blank">Twitter</a></li>
                     </ul>
                 </div>
             </div>

@@ -21,15 +21,33 @@ if (_isHttpPost()) {
         'txtEmail' => array(
             'caption'   => _t('Email'),
             'value'     => $post['email'],
-            'rules'     => array('mandatory', 'email'),
+            'rules'     => array('email'),
         )
     );
 
     if (!$post['id']) {
+        // new
         $validations['txtPwd'] = array(
             'caption'   => _t('Password'),
             'value'     => $post['pwd'],
             'rules'     => array('mandatory', 'minLength', 'maxLength'),
+            'min'       => 8,
+            'max'       => 20,
+        );
+        $validations['txtConfirmPwd'] = array(
+            'caption'   => _t('Confirm Password'),
+            'value'     => $post['confirm_pwd'],
+            'rules'     => array('mandatory', 'validate_confirmPassword'),
+            'parameters'=> array($post['pwd']),
+        );
+    }
+
+    if ($post['id'] && !empty($post['pwd'])) {
+        // edit
+        $validations['txtPwd'] = array(
+            'caption'   => _t('Password'),
+            'value'     => $post['pwd'],
+            'rules'     => array('minLength', 'maxLength'),
             'min'       => 8,
             'max'       => 20,
         );
@@ -47,12 +65,12 @@ if (_isHttpPost()) {
                 'id'        => $post['id'],
                 'full_name' => $post['full_name'],
                 'username'  => $post['username'],
-                'email'     => $post['email'],
+                'email'     => $post['email'] ?: null,
                 'role'      => $post['role'],
             );
 
             if (!empty($post['pwd'])) {
-                $data['password'] = $post['pwd'];
+                $data['password'] = _encrypt($post['pwd']);
             }
 
             if (db_update('user', $data)) {
@@ -60,11 +78,11 @@ if (_isHttpPost()) {
             }
         } else {
             $data = array(
-                'full_name' => $post['full_name'],
-                'username'  => $post['username'],
-                'email'     => $post['email'],
-                'password'  => _encrypt($post['pwd']),
-                'role'      => $post['role'],
+                'full_name'     => $post['full_name'],
+                'username'      => $post['username'],
+                'email'         => $post['email'] ?: null,
+                'password'      => _encrypt($post['pwd']),
+                'role'          => $post['role'],
             );
 
             if (db_insert('user', $data)) {

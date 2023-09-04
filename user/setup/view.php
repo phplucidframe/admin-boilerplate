@@ -10,7 +10,7 @@
                         <td class="label"><?php echo _t('Full Name') ?> <span class="required">*</span></td>
                         <td class="label-separator">:</td>
                         <td class="entry">
-                            <input type="text" name="full_name" id="full_name" value="<?php echo $user->full_name; ?>" class="lc-form-input fluid-100" />
+                            <input type="text" name="full_name" id="full_name" value="<?php echo $user->full_name; ?>" class="lc-form-input fluid-100" autofocus />
                         </td>
                     </tr>
                     <tr>
@@ -20,27 +20,25 @@
                             <input type="text" name="username" id="username" value="<?php echo $user->username; ?>" class="lc-form-input fluid-100" />
                         </td>
                     </tr>
-                    <?php if (!$id): ?>
-                        <tr class="tdPassword">
-                            <td class="label"><?php echo _t('Password') ?> <span class="required">*</span></td>
-                            <td class="label-separator">:</td>
-                            <td class="entry">
-                                <input type="password" name="pwd" id="pwd" class="lc-form-input fluid-100" />
-                            </td>
-                        </tr>
-                        <tr class="tdPassword">
-                            <td class="label"><?php echo _t('Confirm Password') ?> <span class="required">*</span></td>
-                            <td class="label-separator">:</td>
-                            <td class="entry">
-                                <input type="password" name="confirm_pwd" id="confirm-pwd" class="lc-form-input fluid-100" />
-                            </td>
-                        </tr>
-                    <?php endif ?>
                     <tr>
-                        <td class="label"><?php echo _t('Email') ?> <span class="required">*</span></td>
+                        <td class="label"><?php echo _t('Email') ?></td>
                         <td class="label-separator">:</td>
                         <td class="entry">
-                            <input type="text" name="email" id="email" value="<?php echo $user->email ?>" class="lc-form-input fluid-100" />
+                            <input type="email" name="email" id="email" value="<?php echo $user->email ?>" class="lc-form-input fluid-100" />
+                        </td>
+                    </tr>
+                    <tr class="tdPassword">
+                        <td class="label"><?php echo _t('Password') ?> </td>
+                        <td class="label-separator">:</td>
+                        <td class="entry">
+                            <input type="password" name="pwd" id="pwd" class="lc-form-input fluid-100" />
+                        </td>
+                    </tr>
+                    <tr class="tdPassword">
+                        <td class="label"><?php echo _t('Confirm Password') ?></td>
+                        <td class="label-separator">:</td>
+                        <td class="entry">
+                            <input type="password" name="confirm_pwd" id="confirm-pwd" class="lc-form-input fluid-100" />
                         </td>
                     </tr>
                     <tr>
@@ -48,8 +46,8 @@
                         <td class="label-separator">:</td>
                         <td class="entry">
                             <select name="role" class="lc-form-input fluid-100">
-                                <option value="editor" <?php echo form_selected('role', $user->role, 'editor') ?>>Editor</option>
                                 <option value="admin" <?php echo form_selected('role', $user->role, 'admin') ?>>Administrator</option>
+                                <option value="editor" <?php echo form_selected('role', $user->role, 'editor') ?>>Editor</option>
                             </select>
                         </td>
                     </tr>
