@@ -11,6 +11,7 @@ if ($id) {
 }
 
 $user = _entity('user');
+$user->role = 'admin';
 
 if ($id) {
     $user = db_select('user')
