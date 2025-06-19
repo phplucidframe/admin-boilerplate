@@ -27,7 +27,7 @@ if (_isHttpPost()) {
             ->condition('LOWER(username)', strtolower($post['username']))
             ->getSingleResult();
         if ($user) {
-            if ($post['pwd'] == _decrypt($user->password)) {
+            if (password_verify($post['pwd'], $user->password)) {
                 $success = true;
                 unset($user->password);
                 # Create the Authentication object

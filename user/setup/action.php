@@ -70,7 +70,7 @@ if (_isHttpPost()) {
             );
 
             if (!empty($post['pwd'])) {
-                $data['password'] = _encrypt($post['pwd']);
+                $data['password'] = password_hash($post['pwd'], PASSWORD_DEFAULT);
             }
 
             if (db_update('user', $data)) {
@@ -81,7 +81,7 @@ if (_isHttpPost()) {
                 'full_name'     => $post['full_name'],
                 'username'      => $post['username'],
                 'email'         => $post['email'] ?: null,
-                'password'      => _encrypt($post['pwd']),
+                'password'      => password_hash($post['pwd'], PASSWORD_DEFAULT),
                 'role'          => $post['role'],
             );
 
